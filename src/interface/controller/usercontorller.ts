@@ -14,23 +14,36 @@ const userRepository=UserRepositoryIMP(db)
 export const register=async(req:Request,res:Response)=>{
     const {Username,Email,Password}=req.body
    try{
-   
-    const User = Register(userRepository)(Username,Email,Password);
-    res.status(200).json({message:"Sign Up successfull",User});
+    const UserExis=await Exist(userRepository)(Email);
+    console.log(UserExis);
+    if(UserExis===null){
+        const User =await Register(userRepository)(Username,Email,Password);
+        if(User){
+            res.status(200).json({message:"Sign Up successfull",User});   
+        }else{
+            res.status(401).json({message:"Invalid Cridential"})
+        }
+    }else if(UserExis.Username===Username){
+        res.status(401).json({message:"Username already Exist"})
+    }else if(UserExis.Email===Email){
+        res.status(401).json({message:"Email already Exist"})
+    }else if(UserExis.Password===Password){
+        res.status(401).json({message:"Password already Exist"}) 
+    }
    }catch(error){
     res.status(500).json({message:"Internal server error"})
    }
 
 }
 
-export const login =async (req:Request,res:Response)=>{
-    const {Email}=req.body
-    try{
-        const UserExis=Exist(userRepository)(Email);
-        console.log(UserExis);
+// export const login =async (req:Request,res:Response)=>{
+//     const {Email}=req.body
+//     try{
+//         const UserExis=Exist(userRepository)(Email);
+//         console.log(UserExis);
         
-        res.status(200).json({message:"login succesfull",UserExis}) 
-    }catch (error) {
-        res.status(500).json({message:"Imternal server Error"})
-    }
-}
+//         res.status(200).json({message:"login succesfull",UserExis}) 
+//     }catch (error) {
+//         res.status(500).json({message:"Imternal server Error"})
+//     }
+// }

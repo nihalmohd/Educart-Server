@@ -16,8 +16,10 @@ const create=async (User:User)=>{
     return createdUser.toObject()
 }
 
-const findByEmail=async(userEmail:string):Promise<User | null>=>{
-    const UserExist=await Usermodel.findOne({userEmail})
+const findByEmail=async(UserEmail:string):Promise<User | null>=>{
+    console.log(UserEmail);
+    const UserExist=await Usermodel.findOne({Email:UserEmail})
+    console.log(UserExist?.toObject());
    return UserExist?UserExist.toObject():null
 }
 

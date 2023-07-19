@@ -1,5 +1,5 @@
 import {Request, Response, Router} from "express"
-import { login, register } from "../controller/usercontorller";
+import { register } from "../controller/usercontorller";
 
 export const userRouter=Router()
  
@@ -9,5 +9,5 @@ userRouter.get("/",(req:Request,res:Response)=>{
 })
 //Post sign Up
 userRouter.post("/user/register",register)
-userRouter.post("/user/login",login)
+// userRouter.post("/user/login",login)
 
