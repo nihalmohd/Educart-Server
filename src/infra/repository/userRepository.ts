@@ -7,6 +7,7 @@ import { promises } from "dns";
 export type UserRepository={
     create : (User : User)=> Promise<User>; 
     findByEmail:(Email:string) =>  Promise<User|null>;
+    findByUsername:(Username:string) =>Promise<User|null>
 }
 
 export const UserRepositoryIMP=(Usermodel:MongoDBUser):UserRepository=>{
@@ -22,10 +23,16 @@ const findByEmail=async(UserEmail:string):Promise<User | null>=>{
     console.log(UserExist?.toObject());
    return UserExist?UserExist.toObject():null
 }
+const findByUsername=async (Username:string):Promise<User | null >=>{
+     console.log(Username)
+     const UserNameExist=await Usermodel.findOne({Username:Username})
+     return UserNameExist?UserNameExist.toObject():null
+}
 
 return {
     create,
-    findByEmail
+    findByEmail,
+    findByUsername
 }
 }
 
