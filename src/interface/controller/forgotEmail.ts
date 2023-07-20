@@ -9,13 +9,16 @@ const db=Userscheam
 const userRepository=UserRepositoryIMP(db)
 
 
-export const ForgotOtp=(req:Request,res:Response)=>{
+export const ForgotOtp=async (req:Request,res:Response)=>{
+    console.log("hloooooooo");
+    
     const {ForgotEmail} = req.body
 try{
-const ForgotUser=Exist(userRepository)(ForgotEmail)
-console.log(ForgotUser)
-if(ForgotEmail){
-    res.status(200).json({message:"successfull"})
+const ForgotUser=await Exist(userRepository)(ForgotEmail)
+if(ForgotUser){
+    const forgotUserEmail=ForgotUser.Email
+   const ForgotOtp= otpSend(forgotUserEmail)
+    res.status(200).json({message:"successfull",ForgotOtp})
 }else{
  res.status(401).json({message:"User Not Found"})
 }
