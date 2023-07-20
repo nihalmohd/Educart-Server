@@ -3,11 +3,9 @@ import { Userscheam } from "../../infra/database/userModel";
 import { UserRepositoryIMP } from "../../infra/repository/userRepository";
 import { Register } from "../../app/usecase/user/Register";
 import { Exist } from "../../app/usecase/user/Exist";
-import {User} from "../../domin/model/User/User"
-import { constants } from "buffer";
-import { log } from "console";
 import { Login } from "../../app/usecase/user/Login";
-
+import jsonwebtoken, {JwtPayload} from "jsonwebtoken"
+import { generateAccessToken, generateRefreshToken } from "../../Utils/JwtAuthetication";
 const db=Userscheam
 const userRepository=UserRepositoryIMP(db)
 
@@ -20,7 +18,10 @@ export const register=async(req:Request,res:Response)=>{
     if(UserExit===null){
         const User =await Register(userRepository)(Username,Email,Password);
         if(User){
-            res.status(200).json({message:"Sign Up successfull",User});   
+            const {_id,role}=JSON.parse(JSON.stringify(User))
+            const AccessToken=generateAccessToken(_id,role)
+            
+            res.status(200).json({message:"Sign Up successfull",User,AccessToken});   
         }else{
             res.status(401).json({message:"Invalid Cridential"})
         }
