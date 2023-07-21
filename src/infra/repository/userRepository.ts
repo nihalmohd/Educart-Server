@@ -8,6 +8,7 @@ export type UserRepository={
     create : (User : User)=> Promise<User>; 
     findByEmail:(Email:string) =>  Promise<User|null>;
     findByUsername:(Username:string) =>Promise<User|null>
+    FindUsers():Promise<User[]>;
 }
 
 export const UserRepositoryIMP=(Usermodel:MongoDBUser):UserRepository=>{
@@ -29,10 +30,16 @@ const findByUsername=async (Username:string):Promise<User | null >=>{
      return UserNameExist?UserNameExist.toObject():null
 }
 
+const FindUsers=async():Promise<User[]>=>{
+   const FetchedUsers=await Usermodel.find()
+   return FetchedUsers.map((FetchedUsers)=>FetchedUsers.toObject())
+}
+
 return {
     create,
     findByEmail,
-    findByUsername
+    findByUsername,
+    FindUsers
 }
 }
 

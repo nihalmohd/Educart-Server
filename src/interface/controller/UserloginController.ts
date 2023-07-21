@@ -7,9 +7,9 @@ const db=Userscheam
 const userRepository=UserRepositoryIMP(db)
 
 export const login =async (req:Request,res:Response)=>{
-    const {Username}=req.body
+    const {Username,Password}=req.body
     try{
-        const logincheck=await Login(userRepository)(Username);
+        const logincheck=await Login(userRepository)(Username,Password);
         if(logincheck){
             const {_id,role}=JSON.parse(JSON.stringify(logincheck))
             const AccessToken=generateAccessToken(_id,role)
