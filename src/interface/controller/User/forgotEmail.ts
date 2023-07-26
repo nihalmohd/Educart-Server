@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { Userscheam } from "../../infra/database/userModel";
-import { UserRepositoryIMP } from "../../infra/repository/userRepository";
-import { otpSend } from "../../Utils/OTP-generator";
-import { Exist } from "../../app/usecase/user/Exist";
-import { User } from "../../domin/model/User/User";
+import { Userscheam } from "../../../infra/database/userModel";
+import { UserRepositoryIMP } from "../../../infra/repository/userRepository";
+import { otpSend } from "../../../Utils/OTP-generator";
+import { Exist } from "../../../app/usecase/user/Exist";
+import { User } from "../../../domin/model/User/User";
 
 const db=Userscheam
 const userRepository=UserRepositoryIMP(db)

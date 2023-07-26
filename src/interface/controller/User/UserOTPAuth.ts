@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { Userscheam } from "../../infra/database/userModel";
-import { UserRepositoryIMP } from "../../infra/repository/userRepository";
-import { otpSend } from "../../Utils/OTP-generator";
+import { Userscheam } from "../../../infra/database/userModel";
+import { UserRepositoryIMP } from "../../../infra/repository/userRepository";
+import { otpSend } from "../../../Utils/OTP-generator";
 
 
 

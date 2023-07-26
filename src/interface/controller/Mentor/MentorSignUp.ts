@@ -1,20 +1,23 @@
 import { Request, Response } from "express";
-import { Userscheam } from "../../infra/database/userModel";
-import { UserRepositoryIMP } from "../../infra/repository/userRepository";
-import { Register } from "../../app/usecase/user/Register";
-import { Exist } from "../../app/usecase/user/Exist";
-import { generateAccessToken} from "../../Utils/JwtAuthetication";
-const db=Userscheam
-const userRepository=UserRepositoryIMP(db) 
+import { generateAccessToken } from "../../../Utils/JwtAuthetication";
+import { Exist } from "../../../app/usecase/user/Exist";
+import { Register } from "../../../app/usecase/user/Register";
+import { mentorSchema } from "../../../infra/database/MenterModel";
+import { UserRepositoryIMP } from "../../../infra/repository/userRepository";
 
 
-export const register=async(req:Request,res:Response)=>{
+
+const Mentordb=mentorSchema
+const MentorRepository=UserRepositoryIMP(Mentordb)
+
+export const MentorRegister=async(req:Request,res:Response)=>{
     const {Username,Email,Password}=req.body
+    console.log(Username,Email,Password)
    try{
-    const UserExit=await Exist(userRepository)(Email);
+    const UserExit=await Exist(MentorRepository)(Email);
     console.log(UserExit);
     if(UserExit===null){ 
-        const User =await Register(userRepository)(Username,Email,Password);
+        const User =await Register(MentorRepository)(Username,Email,Password);
         if(User){
             const {_id,role}=JSON.parse(JSON.stringify(User))
             const AccessToken=generateAccessToken(_id,role)
@@ -35,5 +38,3 @@ export const register=async(req:Request,res:Response)=>{
    }
 
 }
-
-

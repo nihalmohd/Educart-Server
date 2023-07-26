@@ -3,15 +3,15 @@ import { MongoDBAdmin } from "../database/AdminModel";
 import { MongoDBUser } from "../database/userModel";
 
 export type AdminRepositorytype = {
-  FindByEmail: (Email: string) => Promise<Admin | null>;
+  FindByEmail: (Email: string,Password:string) => Promise<Admin | null>;
 
 };
 
 export const AdminRepositoryIMP = (Adminmodel: MongoDBAdmin): AdminRepositorytype => {
-  const FindByEmail = async (Email: string): Promise<Admin | null> => {
+  const FindByEmail = async (Email: string,Password:string): Promise<Admin | null> => {
     console.log(Email);
     
-    const AdminExist = await Adminmodel.findOne({ Email:Email });
+    const AdminExist = await Adminmodel.findOne({$and:[{Email:Email},{Password:Password}]});
     console.log(AdminExist?.toObject());
     
     return AdminExist ? AdminExist.toObject() : null;
