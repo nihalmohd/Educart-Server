@@ -21,6 +21,10 @@ const userSchema=new Schema({
         type:String,
         default:"User"
     },
+    IsGoogle:{
+        type:Boolean,
+        default:false
+    },
     Status:{
         type:Boolean,
         default:true

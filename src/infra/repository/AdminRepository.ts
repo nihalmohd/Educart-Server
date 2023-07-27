@@ -8,10 +8,10 @@ export type AdminRepositorytype = {
 };
 
 export const AdminRepositoryIMP = (Adminmodel: MongoDBAdmin): AdminRepositorytype => {
-  const FindByEmail = async (Email: string,Password:string): Promise<Admin | null> => {
+  const FindByEmail = async (Email: string): Promise<Admin | null> => {
     console.log(Email);
     
-    const AdminExist = await Adminmodel.findOne({$and:[{Email:Email},{Password:Password}]});
+    const AdminExist = await Adminmodel.findOne({Email:Email});
     console.log(AdminExist?.toObject());
     
     return AdminExist ? AdminExist.toObject() : null;

@@ -21,6 +21,10 @@ const MentorSchema=new Schema({
         type:String,
         default:"Mentor"
     },
+    IsGoogle:{
+        type:String,
+        default:false
+    },
     Status:{
         type:Boolean,
         default:true

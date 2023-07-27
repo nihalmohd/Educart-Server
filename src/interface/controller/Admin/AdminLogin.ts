@@ -21,7 +21,8 @@ export const Adminlogin =async (req:Request,res:Response)=>{
             const {_id,role}=JSON.parse(JSON.stringify(Adminlogincheck))
             const AdminAccessToken=generateAccessToken(_id,role)
             res.status(200).json({message:" Admin login succesfull",Adminlogincheck,AdminAccessToken})
-        }
+    }
+        
     }catch (error) {
         res.status(500).json({message:"Internal server Error"})
     }
