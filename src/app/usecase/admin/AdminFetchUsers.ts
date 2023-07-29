@@ -3,6 +3,6 @@ import { UserRepository } from "../../../infra/repository/userRepository"
 
 
 export const displayUsers=(userRepository:UserRepository)=>{
-    const displayUserGot=userRepository.FindUsers()
+    const displayUserGot =userRepository.FindUsers()
     return displayUserGot
 }

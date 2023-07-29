@@ -28,7 +28,12 @@ const userSchema=new Schema({
     Status:{
         type:Boolean,
         default:true
+    },
+    isOtp:{
+        type:Boolean,
+        default:false
     }
+
 
 })
 export const Userscheam:MongoDBUser=mongoose.connection.model<Document<any, any, any> & User>("user",userSchema)

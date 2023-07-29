@@ -3,3 +3,7 @@ export interface User {
     Email: string;
     Password: string;
   }
+  export interface OTPUser{
+    Email:string;
+    OTP:string;
+  }

@@ -4,6 +4,8 @@ import { MongoDBUser,Userscheam } from "../database/userModel"
 import { promises } from "dns";
 
 
+
+
 export type UserRepository={
     create : (User : User)=> Promise<User>; 
     findByEmail:(Email:string) =>  Promise<User|null>;
@@ -32,8 +34,10 @@ const findByUsername=async (Username:string):Promise<User | null >=>{
 
 const FindUsers=async():Promise<User[]>=>{
    const FetchedUsers=await Usermodel.find()
-   return FetchedUsers.map((FetchedUsers)=>FetchedUsers.toObject())
+   return FetchedUsers
+//    .map((FetchedUsers)=>FetchedUsers.toObject())
 }
+
 
 return {
     create,
