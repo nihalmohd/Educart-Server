@@ -17,11 +17,13 @@ export const MentorLogin=async(req:Request,res:Response)=>{
     console.log(Mentorlogincheck,"MentorLoginCheck");
         if(Mentorlogincheck===null){
             res.status(401).jsonp({message:"User Not Found"})
-        }else{
+        }else if(Mentorlogincheck.Status) {
             const {_id,role}=JSON.parse(JSON.stringify(Mentorlogincheck))
              console.log("logeeed");
             const AccessToken=generateAccessToken(_id,role)
             res.status(200).json({message:"login succesfull",Mentorlogincheck,AccessToken}) 
+        }else{
+            res.status(401).json({message:"Unauthorized Request"})
         }
     }catch (error) {
         res.status(500).json({message:"Internal server Error"})
