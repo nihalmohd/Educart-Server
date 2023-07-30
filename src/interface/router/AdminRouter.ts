@@ -1,6 +1,8 @@
 import { Request, Response, Router } from "express";
 import {Adminlogin} from "../controller/Admin/AdminLogin"
 import { DisplayUsers } from "../controller/Admin/Display-Users";
+import { BlockUserReq } from "../controller/Admin/AdminBlockUser";
+import { UnBlockUserReq } from "../controller/Admin/AdminUnblockUser";
 
 
 export const AdminRouter=Router()
@@ -14,3 +16,5 @@ AdminRouter.get("/Admin",(req:Request,res:Response)=>{
 
 AdminRouter.post("/Login",Adminlogin);
 AdminRouter.post("/getUsers",DisplayUsers)
+AdminRouter.post("/blockUser",BlockUserReq)
+AdminRouter.post("/UnblockUser",UnBlockUserReq)

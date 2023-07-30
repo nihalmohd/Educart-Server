@@ -1,7 +1,8 @@
 import { create } from "domain";
 import { User } from "../../domin/model/User/User"
 import { MongoDBUser,Userscheam } from "../database/userModel"
-import { promises } from "dns";
+import {UpdateResult} from "../../domin/model/User/Update"
+import { ObjectId } from "mongodb";
 
 
 
@@ -11,6 +12,8 @@ export type UserRepository={
     findByEmail:(Email:string) =>  Promise<User|null>;
     findByUsername:(Username:string) =>Promise<User|null>
     FindUsers():Promise<User[]>;
+    UpdateUserStatusTrue: (_id: string) =>Promise<User|void|UpdateResult>;
+    UpdateUserStatusFalse:(_id: string) =>Promise<User|void|UpdateResult>
 }
 
 export const UserRepositoryIMP=(Usermodel:MongoDBUser):UserRepository=>{
@@ -37,13 +40,37 @@ const FindUsers=async():Promise<User[]>=>{
    return FetchedUsers
 //    .map((FetchedUsers)=>FetchedUsers.toObject())
 }
+// const findById= async (_id: any):Promise<User | null >=>{
+//        const FindUserById=await Usermodel.findOne({_id:_id})
+//     return FindUserById
+// }
+const UpdateUserStatusTrue=async (id: string):Promise<User|void|UpdateResult>=>{
+    console.log("kitii kitiiii");    
+  const UpdateUsers=await Usermodel.updateOne({_id: new ObjectId(id) },{$set:{Status:false}}) 
+  if(UpdateUsers.matchedCount>0){
+    console.log("User Block is Ok");
+    return UpdateUsers
+  }
+}
+  const UpdateUserStatusFalse=async (id: string):Promise<User|void|UpdateResult>=>{
+    console.log("kitii kitiiii");    
+  const UpdateUserstrue=await Usermodel.updateOne({_id: new ObjectId(id) },{$set:{Status:true}}) 
+  if(UpdateUserstrue.matchedCount>0){
+    console.log("User UnBlock is Ok");
+    return UpdateUserstrue
+    
+  }
+}
+
 
 
 return {
     create,
     findByEmail,
     findByUsername,
-    FindUsers
+    FindUsers,
+    UpdateUserStatusTrue,
+    UpdateUserStatusFalse
 }
 }
 

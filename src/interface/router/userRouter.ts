@@ -18,3 +18,4 @@ userRouter.post("/user/OTP",OTPAuth)
 userRouter.post("/user/ForgotPassword",ForgotOtp)
 userRouter.post("/user/VerifyOTP",OTPVerification)
 
+
