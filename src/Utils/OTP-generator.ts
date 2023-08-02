@@ -17,7 +17,7 @@ export const otpSend=(Email:string)=>{
     from: 'educart2003@gmail.com', 
     to:OtpEmail ,   
     subject:'Educart Verification.',   
-    text: otp+"otp verification Educart",
+    text: otp+": otp verification Educart",
   }
   
 transporter.sendMail(mailOptions, (error, info) => {

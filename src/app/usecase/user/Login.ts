@@ -1,5 +1,4 @@
-import { UserRepository } from "../../../infra/repository/userRepository";
-
+import { UserRepository } from "../../../infra/repository/userRepository"; 
 export const  Login=(UserRepository:UserRepository)=>async(Username:string,Password:string)=>{
 
 const UserNameExist=await UserRepository.findByUsername(Username)
