@@ -18,7 +18,7 @@ export const AdminCreateBanner=async(req:Request,res:Response)=>{
         
         const BannerData=await Addbanner(BannerRepository)(Image,Content)
         if(BannerData){
-            res.status(200).json({message:"Banner Uploaded"})
+            res.status(200).json({message:"Banner Uploaded",BannerData})
         }else{
             res.status(400).json({message:"Something Went Wrong"})
         }

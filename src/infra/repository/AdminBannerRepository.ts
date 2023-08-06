@@ -1,9 +1,10 @@
 import { BannerModel } from "../../domin/model/Admin/Banner";
-import { MongoDbBanner } from "../database/Banner";
+import { Banner, MongoDbBanner } from "../database/Banner";
 
 
 export type BannerRepository = {
     AddBanner: (BannerData: BannerModel) => Promise<BannerModel>
+    FindBanner(): Promise<BannerModel[]>
 };
 
 export const BannerRepositoryIMP = (BannerModel: MongoDbBanner): BannerRepository => {
@@ -12,8 +13,13 @@ export const BannerRepositoryIMP = (BannerModel: MongoDbBanner): BannerRepositor
         const AddedBanner = await BannerModel.create(BannerData)
         return AddedBanner.toObject()
     }
+    const FindBanner= async ():Promise<BannerModel[]>=>{
+         const foundBanner=await BannerModel.find()
+      return foundBanner
+    }
 
     return {
-        AddBanner
+        AddBanner,
+        FindBanner
     }
 }
