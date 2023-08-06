@@ -3,6 +3,6 @@ import { BannerRepository } from "../../../infra/repository/AdminBannerRepositor
 
 
 export const displayBanner=(BannerRepository:BannerRepository)=>{
-    const displayBannerGot =BannerRepository.FindBanner()
+    const displayBannerGot=BannerRepository.FindBanner()
     return displayBannerGot
 }
