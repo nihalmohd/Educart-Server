@@ -5,7 +5,7 @@ import mongoose from "mongoose"
 export const generateAccessToken=(id:mongoose.Types.ObjectId,role:string)=>{
 const expiresIn="5m"
 const jwtAccessSecret="Access-secret-key"
-const accessToken=jwt.sign({id,role},jwtAccessSecret ,{expiresIn})
+const accessToken=jwt.sign({id,role},jwtAccessSecret ,{expiresIn}) 
 return accessToken
 }
 
