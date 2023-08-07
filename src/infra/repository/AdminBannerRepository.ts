@@ -29,9 +29,9 @@ export const BannerRepositoryIMP = (BannerModel: MongoDbBanner): BannerRepositor
             }
     }
     const VisibleBanner=async (_id:string):Promise<BannerModel | void | UpdateBannerResult>=>{
-        const TrueUpdatedBanner=await BannerModel.updateOne({_id: new ObjectId(_id) },{$set:{Status:false}})
+        const TrueUpdatedBanner=await BannerModel.updateOne({_id: new ObjectId(_id) },{$set:{Status:true}})
         if(TrueUpdatedBanner.matchedCount>0){
-           console.log("banner Blocked ");
+           console.log("banner UnBlocked ");
            return TrueUpdatedBanner
             
         }

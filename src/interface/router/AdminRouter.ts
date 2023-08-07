@@ -9,6 +9,7 @@ import { DisplayMentors } from "../controller/Admin/Display-Mentors";
 import { AdminCreateBanner } from "../controller/Admin/AdminAddbanner";
 import { AdminShowBanner } from "../controller/Admin/AdminShowBanner";
 import { AdminHideBanner } from "../controller/Admin/AdminHideBanner";
+import { AdminVisibleBanner } from "../controller/Admin/VisibleBanner";
 
 
 export const AdminRouter = Router()
@@ -30,3 +31,4 @@ AdminRouter.post("/UnblockMentor", UnBlockMentorReq)
 AdminRouter.post("/BannerUpload", AdminCreateBanner)
 AdminRouter.post("/AdminShowBanner",AdminShowBanner)
 AdminRouter.post('/AdminHideBanner',AdminHideBanner) 
+AdminRouter.post('/AdminVisibleBanner',AdminVisibleBanner) 
