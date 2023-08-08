@@ -17,7 +17,7 @@ export type UserRepository={
 }
 
 export const UserRepositoryIMP=(Usermodel:MongoDBUser):UserRepository=>{
-const create=async (User:User)=>{
+const create=async (User:User):Promise<User>=>{
     const createdUser=await Usermodel.create(User)
     console.log("usercreated",createdUser)
     return createdUser.toObject()
