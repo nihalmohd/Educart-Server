@@ -5,7 +5,7 @@ import { CategoryModel} from "../../domin/model/Admin/Catogory";
 export type MongoDbCategory = Model<Document<any, any, any> & CategoryModel>;
 
 const CategorySchema=new Schema({
-    Catogory:{
+    Category:{
         type:String,
         require:true
     },

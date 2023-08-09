@@ -2,14 +2,14 @@
 import { ObjectId } from 'bson'; 
 
 export interface CategoryModel{
-    Catogory:string,
+    Category:string,
    Subcategory:string[]
 }
 
-// export interface UpdateBannerResult {
-//     acknowledged: boolean;
-//     modifiedCount: number;
-//     upsertedId: ObjectId | null;
-//     upsertedCount: number;
-//     matchedCount: number;
-//   }sdgfsdfg
+export interface UpdateCategoryResult {
+    acknowledged: boolean;
+    modifiedCount: number;
+    upsertedId: ObjectId | null;
+    upsertedCount: number;
+    matchedCount: number;
+  }

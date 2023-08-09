@@ -11,6 +11,10 @@ import { AdminShowBanner } from "../controller/Admin/AdminShowBanner";
 import { AdminHideBanner } from "../controller/Admin/AdminHideBanner";
 import { AdminVisibleBanner } from "../controller/Admin/VisibleBanner";
 import { Addcategory } from "../controller/Admin/AdminCategory";
+import { ShowCategory } from "../controller/Admin/AdminShowCategory";
+import { AdminBlockCategory } from "../controller/Admin/AdminBlockCategory";
+import { AdminUnBlockCategory } from "../controller/Admin/AdminUnblockCategory";
+import { AdminAddSubcategory } from "../controller/Admin/AdminAddSubCategory";
 
 
 export const AdminRouter = Router()
@@ -34,3 +38,8 @@ AdminRouter.post("/AdminShowBanner",AdminShowBanner)
 AdminRouter.post("/AdminHideBanner",AdminHideBanner) 
 AdminRouter.post("/AdminVisibleBanner",AdminVisibleBanner) 
 AdminRouter.post("/AdminCategory",Addcategory)
+AdminRouter.post("/AdminDisplayCategory",ShowCategory)
+AdminRouter.post("/AdminBlockCategory" ,AdminBlockCategory)
+AdminRouter.post("/AdminUnBlockCategory" ,AdminUnBlockCategory)
+AdminRouter.post("/AdminAddSubcategory",AdminAddSubcategory)
+
