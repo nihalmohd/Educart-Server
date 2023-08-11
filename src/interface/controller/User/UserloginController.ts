@@ -24,7 +24,7 @@ export const login =async (req:Request,res:Response)=>{
             res.status(200).json({message:"login succesfull",logincheck,AccessToken}) 
         }else{
             res.status(401).json({message:"Unauthorized Request"})
-        }
+        } 
         }else{
             res.status(401).jsonp({message:"User Not Found"})
         }

@@ -5,7 +5,8 @@ import {Database} from "./src/infra/database/config"
 import {userRouter} from "./src/interface/router/userRouter"
 import { AdminRouter } from "./src/interface/router/AdminRouter";
 import { MentorRouter } from "./src/interface/router/MentorRouts";
-
+import {config} from "dotenv"
+config()
 
 
 const app=express();
