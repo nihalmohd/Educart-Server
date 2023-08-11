@@ -15,6 +15,7 @@ import { ShowCategory } from "../controller/Admin/AdminShowCategory";
 import { AdminBlockCategory } from "../controller/Admin/AdminBlockCategory";
 import { AdminUnBlockCategory } from "../controller/Admin/AdminUnblockCategory";
 import { AdminAddSubcategory } from "../controller/Admin/AdminAddSubCategory";
+import AdminAutherization from "../middlewar/AdminAuthVerification";
 
 
 export const AdminRouter = Router()
@@ -27,19 +28,19 @@ AdminRouter.get("/Admin", (req: Request, res: Response) => {
 // post methods
 
 AdminRouter.post("/Login", Adminlogin);
-AdminRouter.post("/getUsers", DisplayUsers)
-AdminRouter.post("/blockUser", BlockUserReq)
-AdminRouter.post("/UnblockUser", UnBlockUserReq)
-AdminRouter.post("/getMentors", DisplayMentors)
-AdminRouter.post("/blockMentor", BlockMentorReq)
-AdminRouter.post("/UnblockMentor", UnBlockMentorReq)
-AdminRouter.post("/BannerUpload", AdminCreateBanner)
-AdminRouter.post("/AdminShowBanner",AdminShowBanner)
-AdminRouter.post("/AdminHideBanner",AdminHideBanner) 
-AdminRouter.post("/AdminVisibleBanner",AdminVisibleBanner) 
-AdminRouter.post("/AdminCategory",Addcategory)
-AdminRouter.post("/AdminDisplayCategory",ShowCategory)
-AdminRouter.post("/AdminBlockCategory" ,AdminBlockCategory)
-AdminRouter.post("/AdminUnBlockCategory" ,AdminUnBlockCategory)
-AdminRouter.post("/AdminAddSubcategory",AdminAddSubcategory)
+AdminRouter.post("/getUsers", AdminAutherization,DisplayUsers)
+AdminRouter.post("/blockUser",AdminAutherization, BlockUserReq)
+AdminRouter.post("/UnblockUser",AdminAutherization, UnBlockUserReq)
+AdminRouter.post("/getMentors",AdminAutherization, DisplayMentors)
+AdminRouter.post("/blockMentor",AdminAutherization, BlockMentorReq)
+AdminRouter.post("/UnblockMentor",AdminAutherization, UnBlockMentorReq)
+AdminRouter.post("/BannerUpload",AdminAutherization, AdminCreateBanner)
+AdminRouter.post("/AdminShowBanner",AdminAutherization,AdminShowBanner)
+AdminRouter.post("/AdminHideBanner",AdminAutherization,AdminHideBanner) 
+AdminRouter.post("/AdminVisibleBanner",AdminAutherization,AdminVisibleBanner) 
+AdminRouter.post("/AdminCategory",AdminAutherization,Addcategory)
+AdminRouter.post("/AdminDisplayCategory",AdminAutherization,ShowCategory)
+AdminRouter.post("/AdminBlockCategory" ,AdminAutherization,AdminBlockCategory)
+AdminRouter.post("/AdminUnBlockCategory" ,AdminAutherization,AdminUnBlockCategory)
+AdminRouter.post("/AdminAddSubcategory",AdminAutherization,AdminAddSubcategory)
 
