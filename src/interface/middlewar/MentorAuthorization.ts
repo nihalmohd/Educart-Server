@@ -13,11 +13,11 @@ const MentorAutherization = (req:CustomRequest,res:Response,next:NextFunction)=>
             const {id,role}=jwt.verify(token,process.env.JWT_ACCESS_SECRET as jwt.Secret)as JwtPayload
             req.userInfo = { id, role };
             next()
-        }else{
+        }else{ 
             res.status(401).json({message:"No Access Token Founded"})
         }
     } catch (error) {
        res.status(403).json({message:"Access forbidden ,Invalid token "}) 
     }
 }
-export default MentorAutherization
+export default MentorAutherization  

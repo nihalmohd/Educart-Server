@@ -8,6 +8,7 @@ export type CategoryRep={
     UpdateStatusFalse:(_id:string)=>Promise<CategoryModel | void | UpdateCategoryResult>
     UpdateStatusTrue:(_id:string) => Promise<CategoryModel |void | UpdateCategoryResult>
     AddSubcategory(_id:string,Subcategory:string):Promise<CategoryModel | void | UpdateCategoryResult>
+    TakeSubcategory:(_id:string) =>Promise<CategoryModel[]>
 }
 
 export const CategoryRepoIMP=(CategoryModel:MongoDbCategory):CategoryRep =>{
@@ -31,6 +32,10 @@ export const CategoryRepoIMP=(CategoryModel:MongoDbCategory):CategoryRep =>{
   const AddedSubcategory=await CategoryModel.updateOne({_id:new ObjectId(_id)},{$push:{Subcategory:Subcategory}})
   return AddedSubcategory
  }
+ const TakeSubcategory = async (_id:string) :Promise<CategoryModel[]>=>{
+const TookSubcategory =await CategoryModel.find({_id: new ObjectId(_id)})
+return TookSubcategory
+ }
   
 
     return{
@@ -38,7 +43,7 @@ export const CategoryRepoIMP=(CategoryModel:MongoDbCategory):CategoryRep =>{
       findCategory,
       UpdateStatusFalse,
       UpdateStatusTrue,
-      AddSubcategory
-
+      AddSubcategory,
+      TakeSubcategory
     }
 }
