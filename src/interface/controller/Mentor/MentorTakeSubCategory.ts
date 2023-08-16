@@ -9,9 +9,13 @@ const categorydb=Category
 const Categoryrepository=CategoryRepoIMP(categorydb)
 
 export const MenotorTakeSubCategory = async(req:Request,res:Response) => {
-    const _id = req.query._id as string
+    console.log(req.query.SelectedCategory,"got");
+    
+    const Category = req.query.SelectedCategory as string
+    console.log(Category,"paramsn id kittiyo");
+    
     try {
-        const FoundedSubCategroy=await MentorTakeSubCategory(Categoryrepository)(_id)
+        const FoundedSubCategroy=await MentorTakeSubCategory(Categoryrepository)(Category)
         if(FoundedSubCategroy){
             res.status(200).json({message:"SubCategory founded completely",FoundedSubCategroy})
         }else{
