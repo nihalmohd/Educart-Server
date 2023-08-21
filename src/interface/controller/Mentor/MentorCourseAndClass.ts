@@ -6,8 +6,8 @@ const CourseDb=Courses
 
  export const MentorAddCourse = (req:Request,res:Response) =>{
     try {
-        const {CourseTitle,CourseDescription,Learnig,includes,price,ThubmnailImages,category,Subcategory,DemoVideo,classname,classDescription,ClassVideo} = req.body
-        console.log(CourseTitle,CourseDescription,Learnig,includes,price,ThubmnailImages,category,Subcategory,DemoVideo,classname,classDescription,ClassVideo,"add couse");  
+        const {courseTitle,courseDescription,courseLearning,courseIncludes,coursePrice,ThubmnailImages,SelectedCategory,SelectedSubCategory,DemoVideoLocation,className,ClassDescription,ClassVideoLocation} = req.body
+        console.log(courseTitle,courseDescription,courseLearning,courseIncludes,coursePrice,ThubmnailImages,SelectedCategory,SelectedSubCategory,DemoVideoLocation,className,ClassVideoLocation,ClassDescription,"add couse");  
     } catch (error) {
       res.status(500).json({message:"Internal server Error"})  
     }

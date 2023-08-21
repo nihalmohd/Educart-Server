@@ -1,18 +1,20 @@
 import { ObjectId } from "mongoose";
 
 export interface Course {
-    title : string;
-    Price : number;
-    category : string;
-    subcategory : string[];
-    description : string;
-    thumbnail : string;
-    Demovideo : string;
-    MentorId : string;
-    status ?: boolean;
-    User ?: [string];
-    Class ?:[{video:string,thumbnail:string,title:string,description:string,id:Date}];
-    stud ?: [{id:string,date:Date,month:string,fees:number}]
+    courseTitle : string;
+    courseDescription : string;
+    courseLearning:string
+    courseIncludes:string
+    coursePrice : number;
+    ThumbnailLocation : string;
+    SelectedCategory : string;
+    SelectedSubCategory : string;
+    DemoVideoLocation : string;
+    Class ?:[{ClassVideoLocation:string,className:string,ClassDescription:string}];
+    // MentorId : string;
+    Status ?: boolean;
+    // User ?: [string];
+    // stud ?: [{id:string,date:Date,month:string,fees:number}]
     // paymentStatus ?: boolean;
 }
 
