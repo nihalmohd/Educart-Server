@@ -26,7 +26,6 @@ export const register=async(req:Request,res:Response)=>{
         }
     }else if(IsGoogle){
         const {_id,role} =JSON.parse(JSON.stringify(UserExit))
-        console.log(_id,role +"nihalljdkfjlsdjflksdjfjsdf");
         const AccessToken=generateAccessToken(_id,role)
         res.status(200).json({message:"sucessfull",UserExit,AccessToken})
     }else if(UserExit.Username===Username){

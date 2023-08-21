@@ -3,6 +3,7 @@ import { MentorRegister } from "../controller/Mentor/MentorSignUp";
 import { MentorLogin } from "../controller/Mentor/MentorLogin";
 import { MenotorShowCategory } from "../controller/Mentor/MentorShowCategory";
 import { MenotorTakeSubCategory } from "../controller/Mentor/MentorTakeSubCategory";
+import { MentorAddCourse } from "../controller/Mentor/MentorCourseAndClass";
 
 
 
@@ -19,3 +20,4 @@ MentorRouter.post("/MentorLogin",MentorLogin)
 // mentor category get
 MentorRouter.get("/MentorDisplayCategories",MenotorShowCategory)
 MentorRouter.get("/MentorTakeSubcayegory",MenotorTakeSubCategory)
+MentorRouter.post("/MentorAddCoruseAndClass",MentorAddCourse)
