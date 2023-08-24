@@ -3,7 +3,6 @@ import { Course } from "../../domin/model/Mentor/CourseModel"
 
 
 export type MongoDbCourse = Model<Document<any, any, any> & Course>;
-
 const CourseSchema = new Schema({
     courseTitle: {
         type: String,
@@ -17,12 +16,12 @@ const CourseSchema = new Schema({
         type: String,
         required: true
     },
-    CourseIncludes: {
+    courseIncludes: {
         type: String,
         required: true
     },
     coursePrice: {
-        type: Number,
+        type: Number,               
         required: true
     },
     ThumbnailLocation: {
@@ -36,8 +35,8 @@ const CourseSchema = new Schema({
     SelectedSubCategory: {
         type: String,
         required: true
-    },
-    CourseVideo: {
+    },     
+    DemoVideoLocation: {
         type: String,
         required: true
     },

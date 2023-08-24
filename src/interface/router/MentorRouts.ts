@@ -14,7 +14,7 @@ MentorRouter.get("/",(req:Request,res:Response)=>{
     res.status(200).json({status:"done"})
 })
 
-MentorRouter.post("/MentorRegister", MentorRegister,);
+MentorRouter.post("/MentorRegister", MentorRegister);
 MentorRouter.post("/MentorLogin",MentorLogin)
 
 // mentor category get

@@ -1,7 +1,7 @@
 import { Course } from "../../../domin/model/Mentor/CourseModel"
 import { CourseRepository } from "../../../infra/repository/MentorCourse"
 
-export const MentorAddCourse= (CourseRepository:CourseRepository)=>async (courseTitle:string,courseDescription:string,courseLearning:string,courseIncludes:string,coursePrice:number,ThumbnailLocation:string,SelectedCategory:string,SelectedSubCategory:string,DemoVideoLocation:string,classname:string,ClassDescription:string,ClassVideoLocation:string) =>{
+export const MentorAddCourseWithClass= (CourseRepository:CourseRepository)=>async (courseTitle:string, courseDescription:string, courseLearning:string, courseIncludes:string, coursePrice:number, ThumbnailLocation:string, SelectedCategory:string, SelectedSubCategory:string, DemoVideoLocation:string, className:string, ClassDescription:string, classVideoLocation:string) =>{
 const courseDetails :Course={
     courseTitle,
     courseDescription,
@@ -12,7 +12,7 @@ const courseDetails :Course={
     SelectedCategory,
     SelectedSubCategory,
     DemoVideoLocation,
-    Class:[{className:classname,ClassDescription:ClassDescription,ClassVideoLocation:ClassVideoLocation}]
+    Class:[{classname:className,ClassDescription:ClassDescription,classVideoLocation:classVideoLocation}]
 }
 const CreatedCourse = await CourseRepository.CreateCourse(courseDetails)
 return CreatedCourse

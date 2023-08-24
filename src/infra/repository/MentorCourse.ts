@@ -6,7 +6,7 @@ CreateCourse:(CourseDetails:Course)=>Promise<Course>
 FindCourseById:(_id:string) =>Promise<void | CourseRepository | UpdateCourseResult>
 }
 
-export const MentorCourse = (CourseRepository:MongoDbCourse):CourseRepository =>{
+export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository =>{
  const CreateCourse = async (CourseDetails:Course):Promise<Course>=>{
     const CreatedCourse = await CourseRepository.create(CourseDetails)
     return CreatedCourse

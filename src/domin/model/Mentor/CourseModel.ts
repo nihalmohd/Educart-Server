@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose";
 
-export interface Course {
+export interface Course {           
     courseTitle : string;
     courseDescription : string;
     courseLearning:string
@@ -10,7 +10,7 @@ export interface Course {
     SelectedCategory : string;
     SelectedSubCategory : string;
     DemoVideoLocation : string;
-    Class ?:[{ClassVideoLocation:string,className:string,ClassDescription:string}];
+    Class ?:[{classVideoLocation:string,classname:string,ClassDescription:string}];
     // MentorId : string;
     Status ?: boolean;
     // User ?: [string];
@@ -25,3 +25,8 @@ export interface UpdateCourseResult {
     upsertedCount: number;
     matchedCount: number;
   }
+
+
+
+
+
