@@ -4,6 +4,7 @@ import { MongoDbCourse } from "../database/CourseModel";
 export type CourseRepository={
 CreateCourse:(CourseDetails:Course)=>Promise<Course>
 FindCourseById:(_id:string) =>Promise<void | CourseRepository | UpdateCourseResult>
+FindCourse():Promise<Course[]>
 }
 
 export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository =>{
@@ -12,12 +13,16 @@ export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository
     return CreatedCourse
  }
  const FindCourseById =async (_id:string):Promise<void | CourseRepository | UpdateCourseResult> =>{
-    const FoundedCourse = await CourseRepository.findOne({_id:_id})
-    return FoundedCourse?.toObject() 
+    const FoundedCourseByI = await CourseRepository.findOne({_id:_id})
+    return FoundedCourseByI?.toObject() 
+ }
+ const FindCourse = async ():Promise<Course[]>=>{
+   const FoundedCourse = await CourseRepository.find()
+   return FoundedCourse
  }
 return{
 CreateCourse,
-FindCourseById
-}
-
+FindCourseById,
+FindCourse
+}  
 }

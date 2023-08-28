@@ -6,6 +6,8 @@ import { ForgotOtp } from "../controller/User/forgotEmail";
 import { OTPVerification } from "../controller/User/OTPVerification";
 import { AdminShowBanner } from "../controller/Admin/AdminShowBanner";
 import UserAutherization from "../middlewar/UserAuthVerification";
+import { Showcategory } from "../controller/User/userShowCategory";
+import { showCourse } from "../controller/User/UserShowCourse";
 
 export const userRouter=Router()
  
@@ -21,6 +23,8 @@ userRouter.post("/user/ForgotPassword",ForgotOtp)
 userRouter.post("/user/VerifyOTP",OTPVerification)
 // Home get
 userRouter.get("/user/GetBanners",UserAutherization,AdminShowBanner)
+userRouter.get("/ShowCategory",UserAutherization,Showcategory)
+userRouter.get("/showCourse",UserAutherization,showCourse)
 
 
 
