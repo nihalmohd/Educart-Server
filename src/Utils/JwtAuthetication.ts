@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 
 
 export const generateAccessToken=(id:mongoose.Types.ObjectId,role:string)=>{
-const expiresIn="5m"
+const expiresIn="30m"
 const accessToken=jwt.sign({id,role},process.env.JWT_ACCESS_SECRET as jwt.Secret,{expiresIn}) 
 return accessToken
 }

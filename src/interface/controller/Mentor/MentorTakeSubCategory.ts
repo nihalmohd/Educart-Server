@@ -13,7 +13,6 @@ export const MenotorTakeSubCategory = async(req:Request,res:Response) => {
     
     const Category = req.query.SelectedCategory as string
     console.log(Category,"paramsn id kittiyo");
-    
     try {
         const FoundedSubCategroy=await MentorTakeSubCategory(Categoryrepository)(Category)
         if(FoundedSubCategroy){
