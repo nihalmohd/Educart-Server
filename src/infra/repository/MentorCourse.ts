@@ -26,7 +26,7 @@ export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository
    return FoundedCourse
  }
  const BlockCourseByid =async (_id:string):Promise<void | CourseRepository | UpdateCourseResult | UpdateWriteOpResult> =>{
-    const BlockedCouuse =  await CourseRepository.updateOne({_id:new ObjectId(_id)},{$set:{Status:true}})
+    const BlockedCouuse =  await CourseRepository.updateOne({_id:new ObjectId(_id)},{$set:{Status:false}})
     return BlockedCouuse
  }
  const UnblacockCourseByid =async (_id:string):Promise<void | CourseRepository | UpdateCourseResult|UpdateWriteOpResult> =>{
