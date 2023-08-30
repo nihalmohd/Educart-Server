@@ -1,10 +1,15 @@
+import { UpdateWriteOpResult } from "mongoose";
 import { Course, UpdateCourseResult } from "../../domin/model/Mentor/CourseModel";
 import { MongoDbCourse } from "../database/CourseModel";
+import { ObjectId,} from "mongodb";
+
 
 export type CourseRepository={
 CreateCourse:(CourseDetails:Course)=>Promise<Course>
 FindCourseById:(_id:string) =>Promise<void | CourseRepository | UpdateCourseResult>
 FindCourse():Promise<Course[]>
+BlockCourseByid:(_id:string)=>Promise<void | CourseRepository | UpdateCourseResult |UpdateWriteOpResult>
+UnblacockCourseByid:(_id:string)=>Promise<void | CourseRepository | UpdateCourseResult |UpdateWriteOpResult>
 }
 
 export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository =>{
@@ -20,9 +25,20 @@ export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository
    const FoundedCourse = await CourseRepository.find()
    return FoundedCourse
  }
+ const BlockCourseByid =async (_id:string):Promise<void | CourseRepository | UpdateCourseResult | UpdateWriteOpResult> =>{
+    const BlockedCouuse =  await CourseRepository.updateOne({_id:new ObjectId(_id)},{$set:{Status:true}})
+    return BlockedCouuse
+ }
+ const UnblacockCourseByid =async (_id:string):Promise<void | CourseRepository | UpdateCourseResult|UpdateWriteOpResult> =>{
+   const UnblockedCourse = await CourseRepository.updateOne({_id:new ObjectId(_id)},{$set:{Status:true}})
+   return UnblockedCourse
+ }
 return{
 CreateCourse,
 FindCourseById,
-FindCourse
+FindCourse,
+BlockCourseByid,
+UnblacockCourseByid
+
 }  
 }

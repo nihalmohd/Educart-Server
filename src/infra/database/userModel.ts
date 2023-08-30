@@ -25,6 +25,9 @@ const userSchema=new Schema({
         type:Boolean,
         default:false
     },
+    courses : {
+        type : [Object]
+    },
     Status:{
         type:Boolean,
         default:true

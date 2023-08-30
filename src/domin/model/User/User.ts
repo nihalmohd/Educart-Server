@@ -5,6 +5,7 @@ export interface User {
     Email: string;
     Password: string;
     Status?:string
+    courses ?: [{courseId:string,paymentStatus:boolean}],
   }
   export interface OTPUser{
     Email:string;

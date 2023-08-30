@@ -16,6 +16,8 @@ import { AdminBlockCategory } from "../controller/Admin/AdminBlockCategory";
 import { AdminUnBlockCategory } from "../controller/Admin/AdminUnblockCategory";
 import { AdminAddSubcategory } from "../controller/Admin/AdminAddSubCategory";
 import AdminAutherization from "../middlewar/AdminAuthVerification";
+import { AdminDisplayCourse } from "../controller/Admin/AdminDisplayCourse";
+import { AdminBlaockCourse, AdminUnblaockCourse } from "../controller/Admin/AdminCourseManagment";
 
 
 export const AdminRouter = Router()
@@ -43,4 +45,8 @@ AdminRouter.post("/AdminDisplayCategory",AdminAutherization,ShowCategory)
 AdminRouter.post("/AdminBlockCategory" ,AdminAutherization,AdminBlockCategory)
 AdminRouter.post("/AdminUnBlockCategory" ,AdminAutherization,AdminUnBlockCategory)
 AdminRouter.post("/AdminAddSubcategory",AdminAutherization,AdminAddSubcategory)
+AdminRouter.get("/AdminDisplayCourse",AdminAutherization,AdminDisplayCourse)
+AdminRouter.post("/AdminCourseVisible",AdminAutherization,AdminBlaockCourse)
+AdminRouter.post("/AdminCourseInvisible",AdminAutherization,AdminUnblaockCourse)
+
 
