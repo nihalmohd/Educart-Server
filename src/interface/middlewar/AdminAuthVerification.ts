@@ -13,7 +13,9 @@ const AdminAutherization = (req:CustomRequest,res:Response,next:NextFunction)=>{
             let token =req.headers.authorization.split(" ")[1]
             const {id,role}=jwt.verify(token,process.env.JWT_ACCESS_SECRET as jwt.Secret)as JwtPayload
             req.userInfo = { id, role }; 
-            next()
+            if(role==="Admin"){
+                next()
+            }
         }else{
             res.status(401).json({message:"No Access Token Founded"})
         }
