@@ -11,10 +11,11 @@ const UserAutherization = (req:CustomRequest,res:Response,next:NextFunction)=>{
         if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
             let token =req.headers.authorization.split(" ")[1]
             console.log(token);
-            
             const {id,role}=jwt.verify(token,process.env.JWT_ACCESS_SECRET as jwt.Secret)as JwtPayload
             req.userInfo = { id, role };
-            next()
+           if(role==="User"){
+               next()
+           }
         }else{
             res.status(401).json({message:"No Access Token Founded"})
         }

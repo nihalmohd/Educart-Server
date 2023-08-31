@@ -4,6 +4,7 @@ import { MentorLogin } from "../controller/Mentor/MentorLogin";
 import { MenotorShowCategory } from "../controller/Mentor/MentorShowCategory";
 import { MenotorTakeSubCategory } from "../controller/Mentor/MentorTakeSubCategory";
 import { MentorAddCourse } from "../controller/Mentor/MentorCourseAndClass";
+import MentorAutherization from "../middlewar/MentorAuthorization";
 
 
 
@@ -18,6 +19,6 @@ MentorRouter.post("/MentorRegister", MentorRegister);
 MentorRouter.post("/MentorLogin",MentorLogin)
 
 // mentor category get
-MentorRouter.get("/MentorDisplayCategories",MenotorShowCategory)
-MentorRouter.get("/MentorTakeSubcayegory",MenotorTakeSubCategory)
-MentorRouter.post("/MentorAddCoruseAndClass",MentorAddCourse)
+MentorRouter.get("/MentorDisplayCategories",MentorAutherization,MenotorShowCategory)
+MentorRouter.get("/MentorTakeSubcayegory",MentorAutherization,MenotorTakeSubCategory)
+MentorRouter.post("/MentorAddCoruseAndClass",MentorAutherization,MentorAddCourse)
