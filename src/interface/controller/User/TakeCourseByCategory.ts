@@ -5,17 +5,21 @@ import { TakeCourseByCategoryBased } from "../../../app/usecase/user/CorseByCate
 const CourseDb=Courses
 const CourseRepository = MentorCourseIMP(CourseDb)
   
-export const TakeCourseByCategory = async (req:Request,res:Response) =>{
-    const Category = req.query.Category as string
-    console.log(Category,"paramsn id kittiyo");
+export const TakeCourseByCategory = async(req: Request, res: Response) => {
+    console.log("nihall");   
     try {
-        const GotCoureseByCategory =await TakeCourseByCategoryBased(CourseRepository)(Category)
-        if(GotCoureseByCategory){
-            res.status(200).json({message:"Category Bassed Course is Successfully Got",GotCoureseByCategory})
+        const Category = req.query.Category as string
+        console.log(Category);
+        
+        const FoundedCourseByCategory = await TakeCourseByCategoryBased(CourseRepository)(Category)
+        if(FoundedCourseByCategory){
+          res.status(200).json({message:"Course got by id is successfull",FoundedCourseByCategory})
         }else{
-            res.status(400).json({message:"Something went Wrong"})
+          res.status(400).json({message:"Something went wrong"})
         }
+
     } catch (error) {
-        res.status(501).json({message:"Internal Server Error"})
+        res.status(501).json({message:"Internal server Error"})
     }
+  
 }

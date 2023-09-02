@@ -11,6 +11,7 @@ FindCourseById:(_id:string) =>Promise<void | CourseRepository | UpdateCourseResu
 FindCourse():Promise<Course[]>
 BlockCourseByid:(_id:string)=>Promise<void | CourseRepository | UpdateCourseResult |UpdateWriteOpResult>
 UnblacockCourseByid:(_id:string)=>Promise<void | CourseRepository | UpdateCourseResult |UpdateWriteOpResult>
+CourseBycateogry:(Category:string)=>Promise <void | Course[] | UpdateCourseResult>
 }
 
 export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository =>{
@@ -43,6 +44,7 @@ CreateCourse,
 FindCourseById,
 FindCourse,
 BlockCourseByid,
-UnblacockCourseByid
+UnblacockCourseByid,
+CourseBycateogry
 }  
 }
