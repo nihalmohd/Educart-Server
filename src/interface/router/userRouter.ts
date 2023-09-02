@@ -9,6 +9,7 @@ import UserAutherization from "../middlewar/UserAuthVerification";
 import { Showcategory } from "../controller/User/userShowCategory";
 import { showCourse } from "../controller/User/UserShowCourse";
 import { showCourseByid } from "../controller/User/UserShowCourseById";
+import { TakeCourseByCategory } from "../controller/User/TakeCourseByCategory";
 
 export const userRouter=Router()
  
@@ -26,6 +27,7 @@ userRouter.post("/user/VerifyOTP",OTPVerification)
 userRouter.get("/user/GetBanners",UserAutherization,AdminShowBanner)
 userRouter.get("/ShowCategory",UserAutherization,Showcategory)
 userRouter.get("/showCourse",UserAutherization,showCourse)
+userRouter.get('/TekeCouresByCategory',UserAutherization,TakeCourseByCategory)
 
 //Course Details get 
 userRouter.get("/CourseDeatailsByid",UserAutherization,showCourseByid)

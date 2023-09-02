@@ -6,11 +6,11 @@ const CourseDb=Courses
 const CourseRepository = MentorCourseIMP(CourseDb)
 
 
- export const MentorAddCourse = (req:Request,res:Response) =>{
+ export const MentorAddCourse = async(req:Request,res:Response) =>{
     try {  
         const {courseTitle, courseDescription, courseLearning, courseIncludes, coursePrice, ThumbnailLocation, SelectedCategory, SelectedSubCategory, DemoVideoLocation, className, ClassDescription, classVideoLocation} = req.body
         console.log(courseTitle, courseDescription, courseLearning, courseIncludes, coursePrice, ThumbnailLocation, SelectedCategory, SelectedSubCategory, DemoVideoLocation, className, ClassDescription, classVideoLocation,"add couses 12323122343"); 
-          const UploadeCourse = MentorAddCourseWithClass(CourseRepository)(courseTitle, courseDescription, courseLearning, courseIncludes, coursePrice, ThumbnailLocation, SelectedCategory, SelectedSubCategory, DemoVideoLocation, className, ClassDescription, classVideoLocation)
+          const UploadeCourse =await MentorAddCourseWithClass(CourseRepository)(courseTitle, courseDescription, courseLearning, courseIncludes, coursePrice, ThumbnailLocation, SelectedCategory, SelectedSubCategory, DemoVideoLocation, className, ClassDescription, classVideoLocation)
           if(!UploadeCourse){
             res.status(401).json({message:"Something went worong"})
           }

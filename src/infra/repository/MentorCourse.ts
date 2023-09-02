@@ -2,6 +2,7 @@ import { UpdateWriteOpResult } from "mongoose";
 import { Course, UpdateCourseResult } from "../../domin/model/Mentor/CourseModel";
 import { MongoDbCourse } from "../database/CourseModel";
 import { ObjectId,} from "mongodb";
+import { Category } from "../database/Category";
 
 
 export type CourseRepository={
@@ -33,12 +34,15 @@ export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository
    const UnblockedCourse = await CourseRepository.updateOne({_id:new ObjectId(_id)},{$set:{Status:true}})
    return UnblockedCourse
  }
+ const CourseBycateogry =async (Category:string):Promise <void | Course[] | UpdateCourseResult>=>{
+   const FoundedCourseByCategory = await CourseRepository.find({SelectedCategory:Category})
+   return FoundedCourseByCategory
+ } 
 return{
 CreateCourse,
 FindCourseById,
 FindCourse,
 BlockCourseByid,
 UnblacockCourseByid
-
 }  
 }
