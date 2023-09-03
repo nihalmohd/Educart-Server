@@ -2,6 +2,7 @@ import { ObjectId } from "mongoose";
 
 export interface Course {           
     courseTitle : string;
+    Mentorname:string
     courseDescription : string;
     courseLearning:string
     courseIncludes:string

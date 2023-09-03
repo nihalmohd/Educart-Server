@@ -28,8 +28,8 @@ export const MentorRegister=async(req:Request,res:Response)=>{
         }
     }else if(IsGoogle===true){
         const {_id,role}=JSON.parse(JSON.stringify(UserExit))
-        const AccesTocken=generateAccessToken(_id,role) 
-        res.status(200).json({message:"google signUp Succesfull",UserExit,AccesTocken})
+        const AccessToken=generateAccessToken(_id,role) 
+        res.status(200).json({message:"google signUp Succesfull",UserExit,AccessToken})
     }else if(UserExit.Email===Email){
         res.status(401).json({message:"Email already Exist"})
     }else if(UserExit.Username===Username){

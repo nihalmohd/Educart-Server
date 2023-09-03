@@ -62,8 +62,6 @@ const UpdateUserStatusTrue=async (id: string):Promise<User|void|UpdateResult>=>{
   }
 }
 
-
-
 return {
     create,
     findByEmail,

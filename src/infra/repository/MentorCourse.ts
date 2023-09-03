@@ -16,7 +16,10 @@ CourseBycateogry:(Category:string)=>Promise <void | Course[] | UpdateCourseResul
 
 export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository =>{
  const CreateCourse = async (CourseDetails:Course):Promise<Course>=>{
+   // console.log(CourseDetails);
     const CreatedCourse = await CourseRepository.create(CourseDetails)
+    console.log(CreatedCourse?CreatedCourse:null,"nothing is getting");
+    
     return CreatedCourse
  }
  const FindCourseById =async (_id:string):Promise<void | CourseRepository | UpdateCourseResult> =>{
