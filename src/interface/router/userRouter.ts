@@ -27,7 +27,7 @@ userRouter.post("/user/VerifyOTP",OTPVerification)
 userRouter.get("/user/GetBanners",UserAutherization,AdminShowBanner)
 userRouter.get("/ShowCategory",UserAutherization,Showcategory)
 userRouter.get("/showCourse",UserAutherization,showCourse)
-userRouter.get('/TekeCouresByCategory',UserAutherization,TakeCourseByCategory)
+userRouter.get('/TakeCouresByCategory',UserAutherization,TakeCourseByCategory)
 
 //Course Details get 
 userRouter.get("/CourseDeatailsByid",UserAutherization,showCourseByid)
