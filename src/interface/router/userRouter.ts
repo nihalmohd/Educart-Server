@@ -10,6 +10,7 @@ import { Showcategory } from "../controller/User/userShowCategory";
 import { showCourse } from "../controller/User/UserShowCourse";
 import { showCourseByid } from "../controller/User/UserShowCourseById";
 import { TakeCourseByCategory } from "../controller/User/TakeCourseByCategory";
+import { UserTakeProfile } from "../controller/User/UserTakeProfile";
 
 export const userRouter=Router()
  
@@ -28,6 +29,7 @@ userRouter.get("/user/GetBanners",UserAutherization,AdminShowBanner)
 userRouter.get("/ShowCategory",UserAutherization,Showcategory)
 userRouter.get("/showCourse",UserAutherization,showCourse)
 userRouter.get('/TakeCouresByCategory',UserAutherization,TakeCourseByCategory)
+userRouter.get('/ProfileTakeUser',UserAutherization,UserTakeProfile)
 
 //Course Details get 
 userRouter.get("/CourseDeatailsByid",UserAutherization,showCourseByid)

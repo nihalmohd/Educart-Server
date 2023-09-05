@@ -12,6 +12,7 @@ const UserAutherization = (req:CustomRequest,res:Response,next:NextFunction)=>{
             let token =req.headers.authorization.split(" ")[1]
             console.log(token);
             const {id,role}=jwt.verify(token,process.env.JWT_ACCESS_SECRET as jwt.Secret)as JwtPayload
+            console.log(id,role,"loging form UserAutherozation");        
             req.userInfo = { id, role };
            if(role==="User"){
                next()

@@ -9,6 +9,7 @@ export const TakeCourseByCategory = async(req: Request, res: Response) => {
     console.log("nihall");   
     try {
         const Category = req.query.Category as string
+        
         console.log(Category);
         
         const FoundedCourseByCategory = await TakeCourseByCategoryBased(CourseRepository)(Category)

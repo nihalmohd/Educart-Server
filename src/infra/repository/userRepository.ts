@@ -14,6 +14,7 @@ export type UserRepository={
     FindUsers():Promise<User[]>;
     UpdateUserStatusTrue: (_id: string) =>Promise<User|void|UpdateResult>;
     UpdateUserStatusFalse:(_id: string) =>Promise<User|void|UpdateResult>
+    findById:(id?:string) => Promise<User|null>;
 }
 
 export const UserRepositoryIMP=(Usermodel:MongoDBUser):UserRepository=>{
@@ -57,9 +58,14 @@ const UpdateUserStatusTrue=async (id: string):Promise<User|void|UpdateResult>=>{
   const UpdateUserstrue=await Usermodel.updateOne({_id: new ObjectId(id) },{$set:{Status:true}}) 
   if(UpdateUserstrue.matchedCount>0){
     console.log("User UnBlock is Ok");
-    return UpdateUserstrue
-    
+    return UpdateUserstrue 
   }
+}
+const findById=async(id?:string):Promise<User | null>=>{
+  console.log(id,"user_id");
+  const UserGotid=await Usermodel.findOne({_id:id})
+  console.log(UserGotid?.toObject());
+ return UserGotid?UserGotid.toObject():null
 }
 
 return {
@@ -68,7 +74,8 @@ return {
     findByUsername,
     FindUsers,
     UpdateUserStatusTrue,
-    UpdateUserStatusFalse
+    UpdateUserStatusFalse, 
+    findById
 }
 }
 
