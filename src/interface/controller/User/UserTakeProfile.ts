@@ -14,10 +14,16 @@ const db=Userscheam
 const userRepository=UserRepositoryIMP(db)
 
 export const UserTakeProfile=async (req:CustomRequest,res:Response)=>{
+    console.log('helooooo');
+    
  try {
     const user =req.userInfo
     const id=user?.id
+    console.log(id,"constroler");
+    
     const FoundedUser = await TakeUserById(userRepository)(id)
+    console.log(FoundedUser,"contorller");
+    
     if(FoundedUser){
         res.status(200).json({message:"User Founded successfully",FoundedUser})
     }else{
