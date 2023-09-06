@@ -15,6 +15,7 @@ export type UserRepository={
     UpdateUserStatusTrue: (_id: string) =>Promise<User|void|UpdateResult>;
     UpdateUserStatusFalse:(_id: string) =>Promise<User|void|UpdateResult>
     findById:(id?:string) => Promise<User|null>;
+    Updateuser:(id:string,Username:string,Image:string)=>Promise<User|void|UpdateResult>;
 }
 
 export const UserRepositoryIMP=(Usermodel:MongoDBUser):UserRepository=>{
@@ -68,6 +69,13 @@ const findById=async(id?:string):Promise<User | null>=>{
  return UserGotid?UserGotid.toObject():null
 }
 
+const Updateuser = async (id:string,Username:string ,Image:string):Promise<User|void|UpdateResult>=>{
+  const Updateduser =await Usermodel.updateOne({_id:id},{$set:{Username:Username,ProfileImage:Image}})
+  if(Updateduser.matchedCount>0){
+    console.log("User UnBlock is Ok");
+    return Updateduser 
+}
+}
 return {
     create,
     findByEmail,
@@ -75,7 +83,8 @@ return {
     FindUsers,
     UpdateUserStatusTrue,
     UpdateUserStatusFalse, 
-    findById
+    findById,
+    Updateuser
 }
 }
 
