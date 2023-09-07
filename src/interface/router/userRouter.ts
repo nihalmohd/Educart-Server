@@ -12,6 +12,7 @@ import { showCourseByid } from "../controller/User/UserShowCourseById";
 import { TakeCourseByCategory } from "../controller/User/TakeCourseByCategory";
 import { UserTakeProfile } from "../controller/User/UserTakeProfile";
 import { UserProfileUpdate } from "../controller/User/UserProfileUpdate";
+import { UerCouseListUpdate } from "../controller/User/UerCouseListUpdate";
 
 export const userRouter=Router()
  
@@ -40,4 +41,7 @@ userRouter.post('/UpdateProfile',UserAutherization,UserProfileUpdate)
 
 //Course Details get 
 userRouter.get("/CourseDeatailsByid",UserAutherization,showCourseByid)
+
+//Course Details post
+userRouter.post("/UpdateCouseid",UserAutherization,UerCouseListUpdate)
 
