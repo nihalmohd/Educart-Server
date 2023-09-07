@@ -45,3 +45,4 @@ userRouter.get("/CourseDeatailsByid",UserAutherization,showCourseByid)
 //Course Details post
 userRouter.post("/UpdateCouseid",UserAutherization,UerCouseListUpdate)
 
+

@@ -20,7 +20,10 @@ const userRepository=UserRepositoryIMP(db)
 export const UerCouseListUpdate =async (req:CustomRequest,res:Response)=>{
 try {
     const user = req.userInfo
-    const _id =user?.id
+    // const _id =user?.id
+    const _id ="64f715398d88778acc9080c6"
+    console.log(_id);
+    
     const CourseId = req.body.CourseId
     console.log(CourseId,"bodry",req.body);
     const UpdatedCourseId = await UpdatedUserCourseArray(userRepository)(_id as string,CourseId)
