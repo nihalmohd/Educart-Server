@@ -47,6 +47,10 @@ export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository
    const FoundedCourseByName = await CourseRepository.find({Mentorname:Mentorname})
    return FoundedCourseByName
  }
+ const MentorAddClasses =async ( _id:string,Classname:string,ClassDescripion:string,ClassVideoLocaion:string):Promise<void | CourseRepository | UpdateCourseResult|UpdateWriteOpResult> => {
+    const ClassUpdatedCourse = await CourseRepository.updateOne({_id:new ObjectId(_id)},{$push:{Class:{Classname:Classname,ClassDescripion:ClassDescripion,classVideoLocaion:ClassVideoLocaion}}})
+  return ClassUpdatedCourse 
+ }
 return{
 CreateCourse,
 FindCourseById,
