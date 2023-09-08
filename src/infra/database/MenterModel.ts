@@ -28,6 +28,10 @@ const MentorSchema=new Schema({
     Status:{
         type:Boolean,
         default:true
+    },
+    ProfileImage:{
+        type:String,
+        default:"https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png"
     }
 
 })

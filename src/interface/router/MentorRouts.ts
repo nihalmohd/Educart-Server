@@ -7,6 +7,8 @@ import { MentorAddCourse } from "../controller/Mentor/MentorCourseAndClass";
 import MentorAutherization from "../middlewar/MentorAuthorization";
 import { MentorTakeCourseByName } from "../controller/Mentor/MentorTakeCourseByMentor";
 import { AddClasses } from "../controller/Mentor/MentorAddClasses";
+import { MentorTakeById } from "../controller/Mentor/MenorTakeById";
+import { MentorProfileUpdate } from "../controller/Mentor/MentorProfileUpdate";
 
 
 
@@ -27,3 +29,5 @@ MentorRouter.get("/MentorTakeSubcayegory",MentorAutherization,MenotorTakeSubCate
 MentorRouter.get("/MentorTakeCourseByName",MentorAutherization,MentorTakeCourseByName)
 MentorRouter.post("/MentorAddCoruseAndClass",MentorAutherization,MentorAddCourse)
 MentorRouter.post("/MentorAddClasses",MentorAutherization,AddClasses)
+MentorRouter.get("/ProfileTakeMentor",MentorAutherization,MentorTakeById)
+MentorRouter.post("/UpdateMentorProfile",MentorAutherization,MentorProfileUpdate)
