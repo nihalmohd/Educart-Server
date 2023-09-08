@@ -18,6 +18,7 @@ export type UserRepository = {
   findById: (id?: string) => Promise<User | null>;
   Updateuser: (id: string, Username: string, Image: string) => Promise<User | void | UpdateResult>;
   UserCoruseAraryUpdate: (_id:string,CourseId:string)=> Promise<User | void | UpdateResult>
+  FindCourseId:(_id:string,CourseId:string) =>Promise<string>
  }
 
 export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
@@ -82,10 +83,10 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
     const UpdateUserCourseArray = await Usermodel.updateOne({ _id:new ObjectId( _id) }, { $push: { courses: {CourseId:CourseId} } })
     return UpdateUserCourseArray
   }
-  // const FindCourseId = async(_id:string):Promise<User | null >=>{
-  //   const FoundedCouseIdDoc = await Usermodel.findOne()
-  //   return 
-  // }
+  const FindCourseId = async(_id:string,CourseId:string):Promise<string>=>{
+    const FoundedCouseIdDoc = await Usermodel.findOne({_id:_id},{courses:{ CourseId:CourseId}})
+    return  CourseId
+  }
 
   return {
     create,
@@ -96,7 +97,8 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
     UpdateUserStatusFalse,
     findById,
     Updateuser,
-    UserCoruseAraryUpdate
+    UserCoruseAraryUpdate,
+    FindCourseId
   }
 }
 
