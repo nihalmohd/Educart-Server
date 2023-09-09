@@ -12,6 +12,7 @@ FindCourse():Promise<Course[]>
 BlockCourseByid:(_id:string)=>Promise<void | CourseRepository | UpdateCourseResult |UpdateWriteOpResult>
 UnblacockCourseByid:(_id:string)=>Promise<void | CourseRepository | UpdateCourseResult |UpdateWriteOpResult>
 CourseBycateogry:(Category:string)=>Promise <void | Course[] | UpdateCourseResult>
+CourseBySubcateogry:(SubCategory:string)=>Promise <void | Course[] | UpdateCourseResult>
 MentorTakeCourseByName:(Mentorname:string) =>Promise<void | Course[] | UpdateCourseResult>
 MentorAddClasses:(_id:string,Classdatas:object)=>Promise<void | CourseRepository | UpdateCourseResult|UpdateWriteOpResult>
 }
@@ -44,10 +45,15 @@ export const MentorCourseIMP = (CourseRepository:MongoDbCourse):CourseRepository
    const FoundedCourseByCategory = await CourseRepository.find({SelectedCategory:Category})
    return FoundedCourseByCategory
  } 
+ const CourseBySubcateogry =async (SubCategory:string):Promise <void | Course[] | UpdateCourseResult>=>{
+  const FoundedCourseBySubCategory = await CourseRepository.find({SelectedSubCategory:SubCategory})
+  return FoundedCourseBySubCategory
+}
  const MentorTakeCourseByName = async (Mentorname:string):Promise <void | Course[] | UpdateCourseResult>=>{
    const FoundedCourseByName = await CourseRepository.find({Mentorname:Mentorname})
    return FoundedCourseByName
  }
+ 
  const MentorAddClasses =async (_id:string ,Classdatas:object):Promise<void | CourseRepository | UpdateCourseResult|UpdateWriteOpResult> => {
     const ClassUpdatedCourse = await CourseRepository.updateOne({_id:new ObjectId(_id)},{$push:{Class:Classdatas}})
   return ClassUpdatedCourse 
@@ -59,6 +65,7 @@ FindCourse,
 BlockCourseByid,
 UnblacockCourseByid,
 CourseBycateogry,
+CourseBySubcateogry,
 MentorTakeCourseByName,
 MentorAddClasses
 }  
