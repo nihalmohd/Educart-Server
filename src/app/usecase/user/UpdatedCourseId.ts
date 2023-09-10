@@ -5,5 +5,5 @@ export const  UpdatedCourseId=(UserRepository:UserRepository)=>async(_id:string,
 const FoundedCourseid=await UserRepository.FindCourseId(_id,CourseId)
 console.log(FoundedCourseid,"usercase is ok");
 
-return FoundedCourseid   
+return FoundedCourseid;
 }
