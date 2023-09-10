@@ -3,7 +3,7 @@ import { User } from "../../domin/model/User/User"
 import { MongoDBUser, Userscheam } from "../database/userModel"
 import { UpdateResult } from "../../domin/model/User/Update"
 import { ObjectId } from "mongodb";
-import { Courses } from "../database/CourseModel";
+import { Course } from "../../domin/model/Mentor/CourseModel";
 
 
 
@@ -19,6 +19,7 @@ export type UserRepository = {
   Updateuser: (id: string, Username: string, Image: string) => Promise<User | void | UpdateResult>;
   UserCoruseAraryUpdate: (_id:string,CourseId:string)=> Promise<User | void | UpdateResult>
   FindCourseId:(_id:string,CourseId:string) =>Promise<User | null>
+  FindMycoursebyId: (_id:string)=>Promise <User| null>
  }
 
 export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
@@ -80,16 +81,28 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
     }
   }
   const UserCoruseAraryUpdate = async (_id: string, CourseId: string): Promise<User | void | UpdateResult> => {
-    const UpdateUserCourseArray = await Usermodel.updateOne({ _id:new ObjectId( _id) }, { $push: { courses: {CourseId:CourseId} } })
+    console.log(_id,"ready",CourseId,"ready");
+    const UpdateUserCourseArray = await Usermodel.updateOne({ _id:new ObjectId( _id) }, { $push: { courses:CourseId } })
     return UpdateUserCourseArray
   }
+  
   const FindCourseId = async (_id: string, CourseId: string): Promise<User | null> => {
     const FoundedCourseIdDoc = await Usermodel.findOne({
       _id: _id,
-      courses: { $elemMatch: { CourseId: CourseId } }
+      'courses': new ObjectId(CourseId)
     });
+  
+    console.log(FoundedCourseIdDoc);
+  
+    return FoundedCourseIdDoc;
+  }
+  
+  
 
-    return FoundedCourseIdDoc ? FoundedCourseIdDoc : null;
+  const FindMycoursebyId =async (_id:string):Promise <User| null>=>{
+    console.log(_id,"nihallll");
+     const FondedCourse = await Usermodel.findById(new ObjectId(_id)).populate("courses")
+     return FondedCourse
   }
 
   return {
@@ -102,7 +115,8 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
     findById,
     Updateuser,
     UserCoruseAraryUpdate,
-    FindCourseId
+    FindCourseId,
+    FindMycoursebyId
   }
 }
 

@@ -15,6 +15,7 @@ import { UserProfileUpdate } from "../controller/User/UserProfileUpdate";
 import { UerCouseListUpdate } from "../controller/User/UerCouseListUpdate";
 import { UserTakeCourseIdOnUser } from "../controller/User/UserTakeCourseIdOnUser";
 import { UserTakeSubCategory } from "../controller/User/takeSubcategory";
+import { takeMycourses } from "../controller/User/takeMycourses";
 
 export const userRouter=Router()
  
@@ -50,6 +51,7 @@ userRouter.post("/UpdatedCouseIdtake",UserAutherization,UserTakeCourseIdOnUser)
 
 //Category
 userRouter.get("/takeSubcategory",UserAutherization,UserTakeSubCategory)
+userRouter.get("/TakeMycourses",UserAutherization,takeMycourses)
 
 
 

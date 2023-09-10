@@ -2,6 +2,7 @@ import mongoose, { Schema,Model,Document } from "mongoose";
 import {User} from "../../domin/model/User/User"
 
 
+
 export type MongoDBUser = Model<Document<any, any, any> & User>;
 
 const userSchema=new Schema({
@@ -25,9 +26,17 @@ const userSchema=new Schema({
         type:Boolean,
         default:false
     },
-    courses : {
-        type : [Object]
-    },
+    // courses : {
+    //     type:mongoose.Schema.Types.ObjectId
+    //     ref:"Courses",
+    //     type : [Object]
+    // },
+    courses:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Courses",
+        }
+    ],
     Status:{
         type:Boolean,
         default:true
