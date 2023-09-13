@@ -53,5 +53,8 @@ userRouter.post("/UpdatedCouseIdtake",UserAutherization,UserTakeCourseIdOnUser)
 userRouter.get("/takeSubcategory",UserAutherization,UserTakeSubCategory)
 userRouter.get("/TakeMycourses",UserAutherization,takeMycourses)
 
+//Chat 
+userRouter.post ("/AddChat")
+
 
 
