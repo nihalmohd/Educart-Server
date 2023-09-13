@@ -3,7 +3,6 @@ import { User } from "../User/User";
 import { Mentor } from "../Mentor/Mentor";
 
 export interface Chat {
-  chatName: string;
   User?: mongoose.Types.ObjectId;
   Mentor?: mongoose.Types.ObjectId;
   latestMessage?: mongoose.Types.ObjectId;

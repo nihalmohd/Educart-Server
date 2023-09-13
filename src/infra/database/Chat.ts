@@ -5,10 +5,6 @@ export type MongoDBChat = Model<Document & Chat>;
 
 const chatSchema = new Schema<Chat>(
   {
-    chatName: {
-      type: "string",
-      required: true,
-    },
     User: {
       type: mongoose.Types.ObjectId,
       ref: "User",
