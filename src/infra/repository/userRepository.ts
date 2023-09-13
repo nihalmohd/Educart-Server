@@ -85,7 +85,7 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
     const UpdateUserCourseArray = await Usermodel.updateOne({ _id:new ObjectId( _id) }, { $push: { courses:CourseId } })
     return UpdateUserCourseArray
   }
-  
+
   const FindCourseId = async (_id: string, CourseId: string): Promise<User | null> => {
     const FoundedCourseIdDoc = await Usermodel.findOne({
       _id: _id,
@@ -97,8 +97,6 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
     return FoundedCourseIdDoc;
   }
   
-  
-
   const FindMycoursebyId =async (_id:string):Promise <User| null>=>{
     console.log(_id,"nihallll");
      const FondedCourse = await Usermodel.findById(new ObjectId(_id)).populate("courses")

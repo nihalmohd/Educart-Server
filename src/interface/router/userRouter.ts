@@ -16,6 +16,8 @@ import { UerCouseListUpdate } from "../controller/User/UerCouseListUpdate";
 import { UserTakeCourseIdOnUser } from "../controller/User/UserTakeCourseIdOnUser";
 import { UserTakeSubCategory } from "../controller/User/takeSubcategory";
 import { takeMycourses } from "../controller/User/takeMycourses";
+import { AddChat } from "../controller/User/Chat";
+import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 
 export const userRouter=Router()
  
@@ -54,7 +56,8 @@ userRouter.get("/takeSubcategory",UserAutherization,UserTakeSubCategory)
 userRouter.get("/TakeMycourses",UserAutherization,takeMycourses)
 
 //Chat 
-userRouter.post ("/AddChat")
+userRouter.post ("/AddChat",UserAutherization,AddChat)
+userRouter.get("/GetMentors",UserAutherization,MentorTakeByUserId)
 
 
 

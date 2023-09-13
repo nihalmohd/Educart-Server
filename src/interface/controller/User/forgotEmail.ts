@@ -8,7 +8,6 @@ import { User } from "../../../domin/model/User/User";
 const db=Userscheam
 const userRepository=UserRepositoryIMP(db)
 
-
 export const ForgotOtp=async (req:Request,res:Response)=>{
     console.log("hloooooooo");
     

@@ -26,11 +26,6 @@ const userSchema=new Schema({
         type:Boolean,
         default:false
     },
-    // courses : {
-    //     type:mongoose.Schema.Types.ObjectId
-    //     ref:"Courses",
-    //     type : [Object]
-    // },
     courses:[
         {
             type:mongoose.Schema.Types.ObjectId,
