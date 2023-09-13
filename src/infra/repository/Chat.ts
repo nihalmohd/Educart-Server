@@ -17,6 +17,7 @@ export const ChatRepositoryIMP = (chatmodel:MongoDBChat):chatRepository =>{
         const FoundChat = await chatmodel.find()
         return FoundChat
       }
+      
 return{
     creatChat,
     FindChat
