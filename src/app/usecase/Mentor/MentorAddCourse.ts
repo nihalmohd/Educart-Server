@@ -1,12 +1,13 @@
 import { Course } from "../../../domin/model/Mentor/CourseModel"
 import { CourseRepository } from "../../../infra/repository/MentorCourse"
 
-export const MentorAddCourseWithClass= (CourseRepository:CourseRepository)=> (courseTitle:string, courseDescription:string, courseLearning:string, courseIncludes:string, coursePrice:number, SelectedCategory:string, ThumbnailLocation:string, SelectedSubCategory:string, DemoVideoLocation:string, className:string, ClassDescription:string, classVideoLocation:string,Mentorname:string) =>{
-    console.log(coursePrice,"indian rupees ");
+export const MentorAddCourseWithClass= (CourseRepository:CourseRepository)=> (courseTitle:string, courseDescription:string, courseLearning:string, courseIncludes:string, coursePrice:number, SelectedCategory:string, ThumbnailLocation:string, SelectedSubCategory:string, DemoVideoLocation:string, className:string, ClassDescription:string, classVideoLocation:string,Mentorname:string,MentorId:string) =>{
+    console.log(coursePrice,"indian rupees ",MentorId);
     
 const courseDetails :Course={
     courseTitle,
     Mentorname,
+    MentorId,
     courseDescription,
     courseLearning,
     courseIncludes,

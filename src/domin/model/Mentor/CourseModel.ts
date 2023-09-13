@@ -12,7 +12,7 @@ export interface Course {
     SelectedSubCategory : string;
     DemoVideoLocation : string;
     Class ?:[{classVideoLocation:string,classname:string,ClassDescription:string}];
-    // MentorId : string;
+    MentorId : string; 
     Status ?: boolean;
     // User ?: [string];
     // stud ?: [{id:string,date:Date,month:string,fees:number}]

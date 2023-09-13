@@ -8,6 +8,10 @@ const CourseSchema = new Schema({
         type: String,
         required: true
     },
+    MentorId:{
+        type:String,
+        required:true
+    },
     Mentorname:{
         type:String,
         required:true
