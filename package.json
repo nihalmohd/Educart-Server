@@ -1,9 +1,10 @@
 {
   "name": "edu-cart-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "nodemon index.ts",
+    "Build": "tsc outDir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
