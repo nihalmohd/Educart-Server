@@ -1,0 +1,15 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Database = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
+const Database = () => {
+    mongoose_1.default.connect("mongodb://127.0.0.1:27017/Educart").then(() => {
+        console.log("Database connected successfully");
+    }).catch((error) => {
+        console.log(error.message);
+    });
+};
+exports.Database = Database;
