@@ -1,12 +1,10 @@
 {
   "name": "edu-cart-server",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -outDir dist",
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn index.ts"
+    "start": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +26,6 @@
     "@types/node": "^20.4.2",
     "@types/nodemailer": "^6.4.8",
     "@types/otp-generator": "^4.0.0",
-    "tslib": "^2.6.0",
-    "typescript": "^5.1.6"
+    "tslib": "^2.6.0"
   }
 }
