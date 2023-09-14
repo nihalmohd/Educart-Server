@@ -1,7 +1,7 @@
 {
   "name": "edu-cart-server",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "start": "nodemon index.ts",
     "build":"tsc -outDir dist",
