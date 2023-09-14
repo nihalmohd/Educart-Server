@@ -35,13 +35,17 @@ export const ChatRepositoryIMP = (chatmodel:MongoDBChat):chatRepository =>{
      return FoundedChats
     }
     const FindUser =  async (UserId:string):Promise<Chat[]> =>{
-        const FoundedUserByUserid = await chatmodel.find({UserId:new ObjectId(UserId)}).populate("MentorId")
+      console.log(UserId,"UserId");
+      
+        const FoundedUserByUserid = await chatmodel.find({User:new ObjectId(UserId)}).populate("Mentor")
         return FoundedUserByUserid
     }
     const createChat = async (UserId: string, MentorId: string): Promise<Chat[] | null> => {
           const User = new mongoose.Types.ObjectId(UserId);
         const Mentor = new mongoose.Types.ObjectId(MentorId);
-        const isChat = await chatmodel.find({ $and: [{ UserId: UserId }, { MentorId: MentorId }]})
+        const isChat = await chatmodel.find({ $and: [{ User: UserId }, { Mentor: MentorId }]})
+        console.log();
+        
         if (isChat.length > 0) {
           return isChat;
         } else {
@@ -57,7 +61,7 @@ export const ChatRepositoryIMP = (chatmodel:MongoDBChat):chatRepository =>{
             
           return fullChat;
         }
-    };
+      };
     
 return{
     
