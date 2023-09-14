@@ -5,11 +5,11 @@ export type MongoDBChat = Model<Document & Chat>;
 
 const chatSchema = new Schema<Chat>(
   {
-    UserId: {
+    User: {
       type: mongoose.Types.ObjectId,
       ref:"user"
     },
-    MentorId: {
+    Mentor: {
       type: mongoose.Types.ObjectId,
       ref:"Mentor"
 

@@ -20,8 +20,7 @@ const userRepository=UserRepositoryIMP(db)
 export const UerCouseListUpdate =async (req:CustomRequest,res:Response)=>{
 try {
     const user = req.userInfo
-    // const _id =user?.id
-    const _id ="64f715398d88778acc9080c6"
+    const _id =user?.id
     console.log(_id);
     
     const CourseId = req.body.CourseId
