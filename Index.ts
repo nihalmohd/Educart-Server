@@ -1,12 +1,12 @@
 import express from "express"
 import cors from "cors" 
-import mongoose from "mongoose";
 import {Database} from "./src/infra/database/config"
 import {userRouter} from "./src/interface/router/userRouter"
-import { AdminRouter } from "./src/interface/router/AdminRouter";
-import { MentorRouter } from "./src/interface/router/MentorRouts";
-import {config} from "dotenv"
-config()
+import { AdminRouter } from "./src/interface/router/AdminRouter"
+import { MentorRouter } from "./src/interface/router/MentorRouts"
+const dotenv = require("dotenv");
+dotenv.config();
+
 
 
 const app=express();
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cors({
     origin:['http://localhost:3000'],
     methods:["GET","POST"]
-   
+    
 }))
 
 app.use("/",userRouter)
