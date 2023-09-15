@@ -26,7 +26,7 @@ const Chat_1 = require("../controller/User/Chat");
 // import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 const TakeMentorsByUserId_1 = require("../controller/User/TakeMentorsByUserId");
 exports.userRouter = (0, express_1.Router)();
-exports.userRouter.get("/helo", (req, res) => {
+exports.userRouter.get("/", (req, res) => {
     console.log("working");
     res.status(200).json({ status: "done" });
 });
