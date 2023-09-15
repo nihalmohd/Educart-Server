@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000;
 (0, config_1.Database)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000'],
+    origin: ['https://educart-client-react.vercel.app'],
     methods: ["GET", "POST"]
 }));
 app.use("/", userRouter_1.userRouter);
