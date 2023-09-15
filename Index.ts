@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors" 
-// import {Database} from "./src/infra/database/config"
+import {Database} from "./src/infra/database/config"
 import {userRouter} from "./src/interface/router/userRouter"
 import { AdminRouter } from "./src/interface/router/AdminRouter"
 import { MentorRouter } from "./src/interface/router/MentorRouts"
@@ -12,7 +12,7 @@ dotenv.config();
 const app=express();
 const PORT=process.env.PORT||5000;
 
-// Database()
+Database()
 
 app.use(express.json());
 app.use(cors({
