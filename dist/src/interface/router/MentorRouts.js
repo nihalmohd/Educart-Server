@@ -17,7 +17,7 @@ const MenorTakeById_1 = require("../controller/Mentor/MenorTakeById");
 const MentorProfileUpdate_1 = require("../controller/Mentor/MentorProfileUpdate");
 const UserShowCourseById_1 = require("../controller/User/UserShowCourseById");
 exports.MentorRouter = (0, express_1.Router)();
-exports.MentorRouter.get("/", (req, res) => {
+exports.MentorRouter.get("/Mentor", (req, res) => {
     console.log("Mentor working");
     res.status(200).json({ status: "done" });
 });

@@ -15,7 +15,7 @@ import { showCourseByid } from "../controller/User/UserShowCourseById";
 
 export const MentorRouter=Router()
 
-MentorRouter.get("/",(req:Request,res:Response)=>{
+MentorRouter.get("/Mentor",(req:Request,res:Response)=>{
     console.log ("Mentor working")
     res.status(200).json({status:"done"})
 })
