@@ -8,6 +8,10 @@
     "build": "tsc -outDir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=14 <15"
+  },
+  
   "author": "",
   "license": "ISC",
   "description": "",
