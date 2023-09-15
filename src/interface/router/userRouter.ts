@@ -22,7 +22,7 @@ import { TakeMentors } from "../controller/User/TakeMentorsByUserId";
 
 export const userRouter=Router()
  
-userRouter.get("/",(req:Request,res:Response)=>{
+userRouter.get("/healthz",(req:Request,res:Response)=>{
     console.log("working");
     res.status(200).json({status:"done"})
 })
