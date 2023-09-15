@@ -18,6 +18,8 @@ export const UserTakeCourseIdOnUser = async (req:CustomRequest,res:Response) =>{
     const user =req.userInfo
     const _id = user?.id
     const CourseId = req.body.CourseId as string
+    console.log(CourseId,_id);
+    
     try {
         const FoundedCoursidonUser = await UpdatedCourseId(userRepository)(_id as string,CourseId)
         if(FoundedCoursidonUser){

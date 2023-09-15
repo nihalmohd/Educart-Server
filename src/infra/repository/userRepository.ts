@@ -87,19 +87,17 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
   }
 
   const FindCourseId = async (_id: string, CourseId: string): Promise<User | null> => {
-    const FoundedCourseIdDoc = await Usermodel.findOne({
-      _id: _id,
-      'courses': new ObjectId(CourseId)
-    });
-  
-    console.log(FoundedCourseIdDoc);
-  
+    console.log(_id,CourseId,"nihalllllllllllll");
+    
+    const FoundedCourseIdDoc = await Usermodel.findOne({ _id: _id, courses: { $in: [CourseId] } })
+    console.log(FoundedCourseIdDoc,"Founded course id");
     return FoundedCourseIdDoc;
   }
   
   const FindMycoursebyId =async (_id:string):Promise <User| null>=>{
     console.log(_id,"nihallll");
-     const FondedCourse = await Usermodel.findById(new ObjectId(_id)).populate("courses")
+     const FondedCourse = await Usermodel.findOne(new ObjectId(_id)).populate("courses")
+     console.log(FondedCourse,"snsnnn");
      return FondedCourse
   }
 

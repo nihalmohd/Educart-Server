@@ -21,6 +21,7 @@ export const takeMycourses =async (req:CustomRequest,res:Response) =>{
     try {
         const user = req.userInfo
         const _id=user?.id as string
+        console.log(_id,"form where");
         
         const FoundedMycourse =await TakeCourseByUserid(userRepository)(_id) 
         if(FoundedMycourse){

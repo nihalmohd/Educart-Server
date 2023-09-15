@@ -17,12 +17,12 @@ import { UserTakeCourseIdOnUser } from "../controller/User/UserTakeCourseIdOnUse
 import { UserTakeSubCategory } from "../controller/User/takeSubcategory";
 import { takeMycourses } from "../controller/User/takeMycourses";
 import { AddChat } from "../controller/User/Chat";
-import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
+// import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 import { TakeMentors } from "../controller/User/TakeMentorsByUserId";
 
 export const userRouter=Router()
  
-userRouter.get("/healthz",(req:Request,res:Response)=>{
+userRouter.get("/helo",(req:Request,res:Response)=>{
     console.log("working");
     res.status(200).json({status:"done"})
 })

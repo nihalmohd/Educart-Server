@@ -10,13 +10,13 @@ dotenv.config();
 
 
 const app=express();
-const PORT=process.env.PORT||5000;
+const PORT=5000;
 
 Database()
 
 app.use(express.json());
 app.use(cors({
-    origin:['https://educart-client-react.vercel.app'],
+    origin:['http://localhost:3000','https://educart-client-react.vercel.app'],
     methods:["GET","POST"]
     
 }))
