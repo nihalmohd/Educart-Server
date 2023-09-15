@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 export const Database=()=>{
-    mongoose.connect("mongodb://127.0.0.1:27017/Educart").then(()=>{
+    mongoose.connect(process.env.MONGO_URL as string).then(()=>{
         console.log("Database connected successfully")
     }).catch((error)=>{
         console.log(error.message)
