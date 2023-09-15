@@ -16,7 +16,7 @@ Database()
 
 app.use(express.json());
 app.use(cors({
-    origin:['http://localhost:3000'],
+    origin:['https://educart-client-react.vercel.app'],
     methods:["GET","POST"]
     
 }))
