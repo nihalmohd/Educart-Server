@@ -25,7 +25,7 @@ const takeMycourses_1 = require("../controller/User/takeMycourses");
 const Chat_1 = require("../controller/User/Chat");
 const TakeMentorsByUserId_1 = require("../controller/User/TakeMentorsByUserId");
 exports.userRouter = (0, express_1.Router)();
-exports.userRouter.get("/", (req, res) => {
+exports.userRouter.get("/healthz", (req, res) => {
     console.log("working");
     res.status(200).json({ status: "done" });
 });
