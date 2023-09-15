@@ -12,11 +12,11 @@ const MentorRouts_1 = require("./src/interface/router/MentorRouts");
 const dotenv = require("dotenv");
 dotenv.config();
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 (0, config_1.Database)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
-    origin: ['https://educart-client-react.vercel.app'],
+    origin: ['http://localhost:3000', 'https://educart-client-react.vercel.app'],
     methods: ["GET", "POST"]
 }));
 app.use("/", userRouter_1.userRouter);

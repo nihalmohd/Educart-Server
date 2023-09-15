@@ -19,6 +19,7 @@ const takeMycourses = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const user = req.userInfo;
         const _id = user === null || user === void 0 ? void 0 : user.id;
+        console.log(_id, "form where");
         const FoundedMycourse = yield (0, takeCourseByUserid_1.TakeCourseByUserid)(userRepository)(_id);
         if (FoundedMycourse) {
             console.log(FoundedMycourse, "nothign");

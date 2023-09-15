@@ -23,9 +23,10 @@ const UserTakeCourseIdOnUser_1 = require("../controller/User/UserTakeCourseIdOnU
 const takeSubcategory_1 = require("../controller/User/takeSubcategory");
 const takeMycourses_1 = require("../controller/User/takeMycourses");
 const Chat_1 = require("../controller/User/Chat");
+// import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 const TakeMentorsByUserId_1 = require("../controller/User/TakeMentorsByUserId");
 exports.userRouter = (0, express_1.Router)();
-exports.userRouter.get("/healthz", (req, res) => {
+exports.userRouter.get("/helo", (req, res) => {
     console.log("working");
     res.status(200).json({ status: "done" });
 });

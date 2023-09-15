@@ -72,16 +72,15 @@ const UserRepositoryIMP = (Usermodel) => {
         return UpdateUserCourseArray;
     });
     const FindCourseId = (_id, CourseId) => __awaiter(void 0, void 0, void 0, function* () {
-        const FoundedCourseIdDoc = yield Usermodel.findOne({
-            _id: _id,
-            'courses': new mongodb_1.ObjectId(CourseId)
-        });
-        console.log(FoundedCourseIdDoc);
+        console.log(_id, CourseId, "nihalllllllllllll");
+        const FoundedCourseIdDoc = yield Usermodel.findOne({ _id: _id, courses: { $in: [CourseId] } });
+        console.log(FoundedCourseIdDoc, "Founded course id");
         return FoundedCourseIdDoc;
     });
     const FindMycoursebyId = (_id) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(_id, "nihallll");
-        const FondedCourse = yield Usermodel.findById(new mongodb_1.ObjectId(_id)).populate("courses");
+        const FondedCourse = yield Usermodel.findOne(new mongodb_1.ObjectId(_id)).populate("courses");
+        console.log(FondedCourse, "snsnnn");
         return FondedCourse;
     });
     return {

@@ -19,6 +19,7 @@ const UserTakeCourseIdOnUser = (req, res) => __awaiter(void 0, void 0, void 0, f
     const user = req.userInfo;
     const _id = user === null || user === void 0 ? void 0 : user.id;
     const CourseId = req.body.CourseId;
+    console.log(CourseId, _id);
     try {
         const FoundedCoursidonUser = yield (0, UpdatedCourseId_1.UpdatedCourseId)(userRepository)(_id, CourseId);
         if (FoundedCoursidonUser) {
