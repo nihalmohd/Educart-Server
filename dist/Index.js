@@ -15,7 +15,7 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
 (0, config_1.Database)();
 app.use(express_1.default.json());
-app.use(cors({
+app.use(cors_1({
   origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
   methods: ["GET", "POST"],
 }));
