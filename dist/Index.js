@@ -13,7 +13,7 @@ dotenv.config();
 const app = (0, express_1.default)();
 app.use(function (req, res, next) {
     // res.header("Access-Control-Allow-Origin", "*");
-    const allowedOrigins = ['http://localhost:3000', 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app', 'https://educart-client-react.vercel.app'];
+    const allowedOrigins = ['http://localhost:3000', 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app', 'https://educart-mu.vercel.app'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
