@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
 const config_1 = require("./src/infra/database/config");
 const userRouter_1 = require("./src/interface/router/userRouter");
 const AdminRouter_1 = require("./src/interface/router/AdminRouter");
@@ -15,10 +14,22 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
 (0, config_1.Database)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({
-    origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
-    methods: ["GET", "POST"],
-}));
+// app.use(cors({
+//     origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
+//     methods: ["GET", "POST"],
+//   }));
+app.use(function (req, res, next) {
+    // res.header("Access-Control-Allow-Origin", "*");
+    const allowedOrigins = ['http://localhost:3000', 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app', 'https://educart-client-react.vercel.app'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+    next();
+});
 app.use("/", userRouter_1.userRouter);
 app.use("/Admin", AdminRouter_1.AdminRouter);
 app.use("/Mentor", MentorRouts_1.MentorRouter);
