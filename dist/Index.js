@@ -15,11 +15,10 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
 (0, config_1.Database)();
 app.use(express_1.default.json());
-const corsOptions = {
-  origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app', // Update with your frontend's origin
+app.use(cors({
+  origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
   methods: ["GET", "POST"],
-};
-app.use(cors(corsOptions));
+}));
 app.use("/", userRouter_1.userRouter);
 app.use("/Admin", AdminRouter_1.AdminRouter);
 app.use("/Mentor", MentorRouts_1.MentorRouter);
