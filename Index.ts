@@ -10,17 +10,6 @@ dotenv.config();
 
 
 const app=express();
-const PORT=process.env.PORT||5000;
-
-Database()
-
-app.use(express.json());
-// app.use(cors({
-//     origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
-//     methods: ["GET", "POST"],
-//   }));
-
-
 app.use(function(req, res, next) {
     // res.header("Access-Control-Allow-Origin", "*");
     const allowedOrigins = ['http://localhost:3000', 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app', 'https://educart-client-react.vercel.app'];
@@ -33,6 +22,18 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
     next();
     });
+const PORT=process.env.PORT||5000;
+
+Database()
+
+app.use(express.json());
+// app.use(cors({
+//     origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
+//     methods: ["GET", "POST"],
+//   }));
+
+
+
 
 app.use("/",userRouter)
 app.use("/Admin",AdminRouter)
