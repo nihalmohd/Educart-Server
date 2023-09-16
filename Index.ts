@@ -16,10 +16,9 @@ Database()
 
 app.use(express.json());
 app.use(cors({
-    origin:['http://localhost:3000','https://educart-client-react.vercel.app'],
-    methods:["GET","POST"]
-    
-}))
+    origin: 'https://educart-client-react-fra4nss5u-educart2003-gmailcom.vercel.app',
+    methods: ["GET", "POST"],
+  }));
 
 app.use("/",userRouter)
 app.use("/Admin",AdminRouter)
