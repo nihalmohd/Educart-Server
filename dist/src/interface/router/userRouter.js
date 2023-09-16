@@ -25,6 +25,7 @@ const takeMycourses_1 = require("../controller/User/takeMycourses");
 const Chat_1 = require("../controller/User/Chat");
 // import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 const TakeMentorsByUserId_1 = require("../controller/User/TakeMentorsByUserId");
+const paymentDetails_1 = require("../controller/User/paymentDetails");
 exports.userRouter = (0, express_1.Router)();
 exports.userRouter.get("/", (req, res) => {
     console.log("working");
@@ -56,3 +57,5 @@ exports.userRouter.get("/TakeMycourses", UserAuthVerification_1.default, takeMyc
 //Chat 
 exports.userRouter.post("/AddChat", UserAuthVerification_1.default, Chat_1.AddChat);
 exports.userRouter.get("/GetMentors", UserAuthVerification_1.default, TakeMentorsByUserId_1.TakeMentors);
+// add payment details
+exports.userRouter.post("/paymentDetails", UserAuthVerification_1.default, paymentDetails_1.PaymentDetailsCreated);

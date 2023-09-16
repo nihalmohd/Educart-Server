@@ -19,6 +19,9 @@ import { takeMycourses } from "../controller/User/takeMycourses";
 import { AddChat } from "../controller/User/Chat";
 // import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 import { TakeMentors } from "../controller/User/TakeMentorsByUserId";
+import { PaymentDetailsCreated } from "../controller/User/paymentDetails";
+
+
 
 export const userRouter=Router()
  
@@ -60,5 +63,7 @@ userRouter.get("/TakeMycourses",UserAutherization,takeMycourses)
 userRouter.post ("/AddChat",UserAutherization,AddChat)
 userRouter.get("/GetMentors",UserAutherization,TakeMentors)
 
+// add payment details
 
+userRouter.post("/paymentDetails",UserAutherization,PaymentDetailsCreated)
 
