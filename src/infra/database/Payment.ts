@@ -5,13 +5,13 @@ import { payment } from "../../domin/model/payment.ts/payment";
 export type MongoDbPayment = Model<Document<any, any, any> & payment>;
 
 const PaymentSchema=new Schema({
-    courseId:{
-        type: mongoose.Types.ObjectId,
-        require:true
-    },
     UserId:{
         type: mongoose.Types.ObjectId,
         required:true
+    },
+    courseId:{
+        type: mongoose.Types.ObjectId,
+        require:true
     },
     coursePrice:{
         type:Number,

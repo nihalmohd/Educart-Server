@@ -10,8 +10,14 @@ export type paymentRepository ={
 
 
 export const PaymentIMP = (PaymentModel:MongoDbPayment):paymentRepository =>{
+    
     const create = async (_id:string,courseId:string,coursePrice:number):Promise <payment>=>{
-      const CreatedPayment = await PaymentModel.create({_id:_id,courseId:courseId,coursePrice:coursePrice})
+        const couseDetails ={
+            UserId:_id,
+            courseId:courseId,
+            coursePrice:coursePrice
+        }   
+      const CreatedPayment = await PaymentModel.create(couseDetails)
         return CreatedPayment
     }
     const FindAllpaymnents = async():Promise<payment[]>=>{

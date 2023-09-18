@@ -9,28 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentDetailsCreated = void 0;
-const CreatePaymentDetails_1 = require("../../../app/usecase/user/CreatePaymentDetails");
+exports.AdminGetPauments = void 0;
 const Payment_1 = require("../../../infra/database/Payment");
 const Payments_1 = require("../../../infra/repository/Payments");
+const FindPayment_1 = require("../../../app/usecase/admin/FindPayment");
 const paymentDb = Payment_1.Payment;
 const PaymentReopository = (0, Payments_1.PaymentIMP)(paymentDb);
-const PaymentDetailsCreated = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const AdminGetPauments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { CourseId, coursePrice } = req.body;
-        console.log(coursePrice.current, "current is pritting ");
-        const User = req.userInfo;
-        const UserId = User === null || User === void 0 ? void 0 : User.id;
-        const createdPayments = yield (0, CreatePaymentDetails_1.addPayments)(PaymentReopository)(UserId, CourseId, coursePrice.current);
-        if (createdPayments) {
-            res.status(200).json({ message: "Founded successfull", createdPayments });
+        const FoundedPaymentDetails = yield (0, FindPayment_1.FindPayment)(PaymentReopository);
+        if (FoundedPaymentDetails) {
+            res.status(200).json({ message: "Founded Successfully", FoundedPaymentDetails });
         }
         else {
-            res.status(401).json({ message: "something went wrong" });
+            res.status(401).json({ message: "something went worng " });
         }
     }
     catch (error) {
-        res.status(501).json({ message: "ingernal server" });
+        res.status(500).json({ message: "Internal server error" });
     }
 });
-exports.PaymentDetailsCreated = PaymentDetailsCreated;
+exports.AdminGetPauments = AdminGetPauments;

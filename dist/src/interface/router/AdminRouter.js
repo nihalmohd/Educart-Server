@@ -24,6 +24,7 @@ const AdminAddSubCategory_1 = require("../controller/Admin/AdminAddSubCategory")
 const AdminAuthVerification_1 = __importDefault(require("../middlewar/AdminAuthVerification"));
 const AdminDisplayCourse_1 = require("../controller/Admin/AdminDisplayCourse");
 const AdminCourseManagment_1 = require("../controller/Admin/AdminCourseManagment");
+const AdminGetPauments_1 = require("../controller/Admin/AdminGetPauments");
 exports.AdminRouter = (0, express_1.Router)();
 exports.AdminRouter.get("/Admin", (req, res) => {
     console.log("working");
@@ -49,3 +50,4 @@ exports.AdminRouter.post("/AdminAddSubcategory", AdminAuthVerification_1.default
 exports.AdminRouter.get("/AdminDisplayCourse", AdminAuthVerification_1.default, AdminDisplayCourse_1.AdminDisplayCourse);
 exports.AdminRouter.post("/AdminCourseVisible", AdminAuthVerification_1.default, AdminCourseManagment_1.AdminBlaockCourse);
 exports.AdminRouter.post("/AdminCourseInvisible", AdminAuthVerification_1.default, AdminCourseManagment_1.AdminUnblaockCourse);
+exports.AdminRouter.get("/GetPayments", AdminAuthVerification_1.default, AdminGetPauments_1.AdminGetPauments);

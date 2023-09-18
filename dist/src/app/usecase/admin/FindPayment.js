@@ -9,24 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentIMP = void 0;
-const PaymentIMP = (PaymentModel) => {
-    const create = (_id, courseId, coursePrice) => __awaiter(void 0, void 0, void 0, function* () {
-        const couseDetails = {
-            UserId: _id,
-            courseId: courseId,
-            coursePrice: coursePrice
-        };
-        const CreatedPayment = yield PaymentModel.create(couseDetails);
-        return CreatedPayment;
-    });
-    const FindAllpaymnents = () => __awaiter(void 0, void 0, void 0, function* () {
-        const FoundedPayments = yield PaymentModel.find();
-        return FoundedPayments;
-    });
-    return {
-        create,
-        FindAllpaymnents
-    };
-};
-exports.PaymentIMP = PaymentIMP;
+exports.FindPayment = void 0;
+const FindPayment = (paymentRepo) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("usecase");
+    const FoundedPayment = yield paymentRepo.FindAllpaymnents();
+    console.log(FoundedPayment, "usercase is ok");
+    return FoundedPayment;
+});
+exports.FindPayment = FindPayment;

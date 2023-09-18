@@ -14,9 +14,10 @@ interface CustomRequest extends Request {
 export const PaymentDetailsCreated = async(req:CustomRequest,res:Response)=>{  
     try {
         const {CourseId,coursePrice} = req.body
+        console.log(coursePrice.current ,"current is pritting ");
         const User =req.userInfo
         const UserId =User?.id as string
-        const createdPayments =  await addPayments(PaymentReopository)(UserId,CourseId,coursePrice)
+        const createdPayments =  await addPayments(PaymentReopository)(UserId,CourseId,coursePrice.current)
         if(createdPayments){
             res.status(200).json({message:"Founded successfull",createdPayments})
         }else{

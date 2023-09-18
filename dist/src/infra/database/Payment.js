@@ -26,13 +26,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Payment = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const PaymentSchema = new mongoose_1.Schema({
-    courseId: {
-        type: mongoose_1.default.Types.ObjectId,
-        require: true
-    },
     UserId: {
         type: mongoose_1.default.Types.ObjectId,
         required: true
+    },
+    courseId: {
+        type: mongoose_1.default.Types.ObjectId,
+        require: true
     },
     coursePrice: {
         type: Number,

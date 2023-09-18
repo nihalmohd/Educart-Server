@@ -18,6 +18,7 @@ import { AdminAddSubcategory } from "../controller/Admin/AdminAddSubCategory";
 import AdminAutherization from "../middlewar/AdminAuthVerification";
 import { AdminDisplayCourse } from "../controller/Admin/AdminDisplayCourse";
 import { AdminBlaockCourse, AdminUnblaockCourse } from "../controller/Admin/AdminCourseManagment";
+import { AdminGetPauments } from "../controller/Admin/AdminGetPauments";
 
 
 export const AdminRouter = Router()
@@ -48,5 +49,6 @@ AdminRouter.post("/AdminAddSubcategory",AdminAutherization,AdminAddSubcategory)
 AdminRouter.get("/AdminDisplayCourse",AdminAutherization,AdminDisplayCourse)
 AdminRouter.post("/AdminCourseVisible",AdminAutherization,AdminBlaockCourse)
 AdminRouter.post("/AdminCourseInvisible",AdminAutherization,AdminUnblaockCourse)
+AdminRouter.get("/GetPayments",AdminAutherization,AdminGetPauments)
 
 
