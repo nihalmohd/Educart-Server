@@ -13,6 +13,7 @@ exports.AddChat = void 0;
 const Chat_1 = require("../../../infra/database/Chat");
 const Chat_2 = require("../../../infra/repository/Chat");
 const AddChat_1 = require("../../../app/usecase/Chat/AddChat");
+// import { FindChatsByIds } from "../../../app/usecase/Chat/FindChatByIds";
 const Chatdb = Chat_1.chatModel;
 const chatRepsitory = (0, Chat_2.ChatRepositoryIMP)(Chatdb);
 const AddChat = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

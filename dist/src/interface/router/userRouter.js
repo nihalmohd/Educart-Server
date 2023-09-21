@@ -26,6 +26,9 @@ const Chat_1 = require("../controller/User/Chat");
 // import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 const TakeMentorsByUserId_1 = require("../controller/User/TakeMentorsByUserId");
 const paymentDetails_1 = require("../controller/User/paymentDetails");
+const FindChatByIds_1 = require("../controller/User/FindChatByIds");
+const createMessage_1 = require("../controller/User/createMessage");
+const FindMessageByChatId_1 = require("../controller/User/FindMessageByChatId");
 exports.userRouter = (0, express_1.Router)();
 exports.userRouter.get("/", (req, res) => {
     console.log("working");
@@ -57,5 +60,9 @@ exports.userRouter.get("/TakeMycourses", UserAuthVerification_1.default, takeMyc
 //Chat 
 exports.userRouter.post("/AddChat", UserAuthVerification_1.default, Chat_1.AddChat);
 exports.userRouter.get("/GetMentors", UserAuthVerification_1.default, TakeMentorsByUserId_1.TakeMentors);
+exports.userRouter.get("/GetChatbyId", UserAuthVerification_1.default, FindChatByIds_1.FidingChat);
 // add payment details
 exports.userRouter.post("/paymentDetails", UserAuthVerification_1.default, paymentDetails_1.PaymentDetailsCreated);
+// message 
+exports.userRouter.post("/CreateMessage", createMessage_1.StartMessage);
+exports.userRouter.get("/FindingMessage", FindMessageByChatId_1.FindByChatedId);

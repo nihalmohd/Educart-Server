@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChatRepositoryIMP = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const mongodb_1 = require("mongodb");
 const ChatRepositoryIMP = (chatmodel) => {
     // const creatChat = async(UserId:string,MentorId:string):Promise<Chat >=>{
     //     console.log(UserId,MentorId,"is ok");
@@ -25,18 +24,20 @@ const ChatRepositoryIMP = (chatmodel) => {
         const FoundChat = yield chatmodel.find();
         return FoundChat;
     });
-    const FindMentor = (MentorId) => __awaiter(void 0, void 0, void 0, function* () {
-        const FoundedUserByMentorid = yield chatmodel.find({ UserId: new mongodb_1.ObjectId(MentorId) });
-        return FoundedUserByMentorid;
-    });
     const FindByIds = (userId, MentorId) => __awaiter(void 0, void 0, void 0, function* () {
-        const FoundedChats = yield chatmodel.find({ $and: [{ userId: userId }, { MentorId: MentorId }] });
+        const FoundedChats = yield chatmodel.findOne({ $and: [{ userId: userId }, { MentorId: MentorId }] });
         console.log(FoundedChats, "halloow this is shown form backded repository");
         return FoundedChats;
     });
+    const FindMentor = (MentorId) => __awaiter(void 0, void 0, void 0, function* () {
+        const FoundedUserByMentorid = yield chatmodel.find({ Mentor: MentorId }).populate("User");
+        return FoundedUserByMentorid;
+    });
     const FindUser = (UserId) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(UserId, "UserId");
-        const FoundedUserByUserid = yield chatmodel.find({ User: new mongodb_1.ObjectId(UserId) }).populate("Mentor");
+        // const User = new ObjectId(UserId)
+        const FoundedUserByUserid = yield chatmodel.find({ User: UserId }).populate("Mentor");
+        console.log(FoundedUserByUserid);
         return FoundedUserByUserid;
     });
     const createChat = (UserId, MentorId) => __awaiter(void 0, void 0, void 0, function* () {

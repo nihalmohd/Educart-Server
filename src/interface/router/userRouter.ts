@@ -20,6 +20,9 @@ import { AddChat } from "../controller/User/Chat";
 // import { MentorTakeByUserId } from "../../app/usecase/Chat/MentorTakebyUserId";
 import { TakeMentors } from "../controller/User/TakeMentorsByUserId";
 import { PaymentDetailsCreated } from "../controller/User/paymentDetails";
+import { FidingChat } from "../controller/User/FindChatByIds";
+import { StartMessage } from "../controller/User/createMessage";
+import { FindByChatedId } from "../controller/User/FindMessageByChatId";
 
 
 
@@ -62,9 +65,16 @@ userRouter.get("/TakeMycourses",UserAutherization,takeMycourses)
 //Chat 
 userRouter.post ("/AddChat",UserAutherization,AddChat)
 userRouter.get("/GetMentors",UserAutherization,TakeMentors)
+userRouter.get("/GetChatbyId",UserAutherization,FidingChat)
 
 // add payment details
-
 userRouter.post("/paymentDetails",UserAutherization,PaymentDetailsCreated)
+
+// message 
+
+userRouter.post("/CreateMessage",StartMessage)
+userRouter.get("/FindingMessage",FindByChatedId)
+
+
 
 

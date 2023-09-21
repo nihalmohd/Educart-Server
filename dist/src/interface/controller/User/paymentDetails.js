@@ -18,7 +18,7 @@ const PaymentReopository = (0, Payments_1.PaymentIMP)(paymentDb);
 const PaymentDetailsCreated = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { CourseId, coursePrice } = req.body;
-        console.log(coursePrice.current, "current is pritting ");
+        console.log(coursePrice.current, "current is pritting");
         const User = req.userInfo;
         const UserId = User === null || User === void 0 ? void 0 : User.id;
         const createdPayments = yield (0, CreatePaymentDetails_1.addPayments)(PaymentReopository)(UserId, CourseId, coursePrice.current);

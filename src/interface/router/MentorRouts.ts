@@ -10,6 +10,8 @@ import { AddClasses } from "../controller/Mentor/MentorAddClasses";
 import { MentorTakeById } from "../controller/Mentor/MenorTakeById";
 import { MentorProfileUpdate } from "../controller/Mentor/MentorProfileUpdate";
 import { showCourseByid } from "../controller/User/UserShowCourseById";
+import { TakeMentors } from "../controller/User/TakeMentorsByUserId";
+import { TakeUserByMentorId } from "../controller/Mentor/TakeChatByMentorId";
 
 
 
@@ -33,3 +35,4 @@ MentorRouter.post("/MentorAddClasses",MentorAutherization,AddClasses)
 MentorRouter.get("/ProfileTakeMentor",MentorAutherization,MentorTakeById)
 MentorRouter.post("/UpdateMentorProfile",MentorAutherization,MentorProfileUpdate)
 MentorRouter.get('/takeCoursebyid',MentorAutherization,showCourseByid)
+MentorRouter.get('/TakeUsers',MentorAutherization,TakeUserByMentorId)

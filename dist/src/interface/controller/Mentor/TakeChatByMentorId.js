@@ -9,17 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TakeMentors = void 0;
+exports.TakeUserByMentorId = void 0;
 const Chat_1 = require("../../../infra/database/Chat");
 const Chat_2 = require("../../../infra/repository/Chat");
-const MentorTakebyUserId_1 = require("../../../app/usecase/Chat/MentorTakebyUserId");
+const UserTakeByMentorId_1 = require("../../../app/usecase/Chat/UserTakeByMentorId");
 const Chatdb = Chat_1.chatModel;
 const chatRepsitory = (0, Chat_2.ChatRepositoryIMP)(Chatdb);
-const TakeMentors = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const TakeUserByMentorId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const User = req.userInfo;
-        const UserId = User === null || User === void 0 ? void 0 : User.id;
-        const FoundedUserChat = yield (0, MentorTakebyUserId_1.MentorTakeByUserId)(chatRepsitory)(UserId);
+        const MentorId = User === null || User === void 0 ? void 0 : User.id;
+        const FoundedUserChat = yield (0, UserTakeByMentorId_1.UserTakeByMentorId)(chatRepsitory)(MentorId);
         if (FoundedUserChat) {
             res.status(200).json({ message: "Founded successfull", FoundedUserChat });
         }
@@ -31,4 +31,4 @@ const TakeMentors = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(501).json({ message: "internal server" });
     }
 });
-exports.TakeMentors = TakeMentors;
+exports.TakeUserByMentorId = TakeUserByMentorId;

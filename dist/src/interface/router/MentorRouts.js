@@ -16,6 +16,7 @@ const MentorAddClasses_1 = require("../controller/Mentor/MentorAddClasses");
 const MenorTakeById_1 = require("../controller/Mentor/MenorTakeById");
 const MentorProfileUpdate_1 = require("../controller/Mentor/MentorProfileUpdate");
 const UserShowCourseById_1 = require("../controller/User/UserShowCourseById");
+const TakeChatByMentorId_1 = require("../controller/Mentor/TakeChatByMentorId");
 exports.MentorRouter = (0, express_1.Router)();
 exports.MentorRouter.get("/mentor", (req, res) => {
     console.log("Mentor working");
@@ -33,3 +34,4 @@ exports.MentorRouter.post("/MentorAddClasses", MentorAuthorization_1.default, Me
 exports.MentorRouter.get("/ProfileTakeMentor", MentorAuthorization_1.default, MenorTakeById_1.MentorTakeById);
 exports.MentorRouter.post("/UpdateMentorProfile", MentorAuthorization_1.default, MentorProfileUpdate_1.MentorProfileUpdate);
 exports.MentorRouter.get('/takeCoursebyid', MentorAuthorization_1.default, UserShowCourseById_1.showCourseByid);
+exports.MentorRouter.get('/TakeUsers', MentorAuthorization_1.default, TakeChatByMentorId_1.TakeUserByMentorId);

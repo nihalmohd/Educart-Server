@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { chatModel } from "../../../infra/database/Chat";
 import { ChatRepositoryIMP } from "../../../infra/repository/Chat";
 import { AddChats } from "../../../app/usecase/Chat/AddChat";
-import { FindChatsByIds } from "../../../app/usecase/Chat/FindChatByIds";
+// import { FindChatsByIds } from "../../../app/usecase/Chat/FindChatByIds";
 
 const Chatdb=chatModel
 const chatRepsitory = ChatRepositoryIMP(Chatdb)

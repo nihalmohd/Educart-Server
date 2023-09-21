@@ -9,26 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TakeMentors = void 0;
+exports.FidingChat = void 0;
 const Chat_1 = require("../../../infra/database/Chat");
 const Chat_2 = require("../../../infra/repository/Chat");
-const MentorTakebyUserId_1 = require("../../../app/usecase/Chat/MentorTakebyUserId");
+const FindChatByIds_1 = require("../../../app/usecase/Chat/FindChatByIds");
 const Chatdb = Chat_1.chatModel;
 const chatRepsitory = (0, Chat_2.ChatRepositoryIMP)(Chatdb);
-const TakeMentors = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const FidingChat = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const User = req.userInfo;
         const UserId = User === null || User === void 0 ? void 0 : User.id;
-        const FoundedUserChat = yield (0, MentorTakebyUserId_1.MentorTakeByUserId)(chatRepsitory)(UserId);
-        if (FoundedUserChat) {
-            res.status(200).json({ message: "Founded successfull", FoundedUserChat });
+        const { MentorId } = req.body;
+        console.log(MentorId, "mentor Id");
+        const FoundedChat = yield (0, FindChatByIds_1.FindChatsByIds)(chatRepsitory)(UserId, MentorId);
+        if (FoundedChat) {
+            res.status(200).json({ message: "Founded Successfull", FoundedChat });
         }
         else {
-            res.status(401).json({ message: "something went wrong" });
+            res.status(401).json({ message: "something went wrong " });
         }
     }
     catch (error) {
-        res.status(501).json({ message: "internal server" });
+        res.status(501).json({ message: "Internal server Error" });
     }
 });
-exports.TakeMentors = TakeMentors;
+exports.FidingChat = FidingChat;
