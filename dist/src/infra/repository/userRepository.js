@@ -79,7 +79,7 @@ const UserRepositoryIMP = (Usermodel) => {
     });
     const FindMycoursebyId = (_id) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(_id, "nihallll");
-        const FondedCourse = yield Usermodel.findOne(new mongodb_1.ObjectId(_id)).populate("courses");
+        const FondedCourse = yield Usermodel.findOne({ _id }).populate("courses");
         console.log(FondedCourse, "snsnnn");
         return FondedCourse;
     });
