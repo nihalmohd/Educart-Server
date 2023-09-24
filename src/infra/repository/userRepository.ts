@@ -96,7 +96,7 @@ export const UserRepositoryIMP = (Usermodel: MongoDBUser): UserRepository => {
   
   const FindMycoursebyId =async (_id:string):Promise <User| null>=>{
     console.log(_id,"nihallll");
-     const FondedCourse = await Usermodel.findOne(new ObjectId(_id)).populate("courses")
+     const FondedCourse = await Usermodel.findOne({_id}).populate("courses")
      console.log(FondedCourse,"snsnnn");
      return FondedCourse
   }
