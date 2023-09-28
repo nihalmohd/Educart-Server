@@ -19,15 +19,5 @@
         "src": "/(.*)",
         "dest": "/dist/index.js"
       }
-    ],
-    "development": {
-      "command": "dev"
-    },
-    "public": {
-      "output": "./dist/public"
-    },
-    "functions": {
-      "output": "./dist/functions"
-    }
+    ]
   }
-  
