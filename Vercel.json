@@ -2,14 +2,29 @@
     "version": 2,
     "builds": [
       {
-        "src": "./dist/Index.js",
+        "src": "./dist/index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
+        "src": "/public/(.*)",
+        "dest": "/public/$1"
+      },
+      {
+        "src": "/views/(.*)",
+        "dest": "/views/$1"
+      },
+      {
         "src": "/(.*)",
-        "dest": "/dist/Index.js"
+        "dest": "/dist/index.js"
       }
-    ]
+    ],
+    "public": {
+      "output": "./dist/public"
+    },
+    "functions": {
+      "output": "./dist/functions"
+    }
   }
+  
